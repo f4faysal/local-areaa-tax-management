@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { Layout, Menu } from "antd";
+import { useState } from "react";
 
-import { sidebarItems } from "@/constants/sidebarItems";
 import { USER_ROLE } from "@/constants/role";
+import { sidebarItems } from "@/constants/sidebarItems";
 
 const { Sider } = Layout;
 
@@ -37,7 +37,12 @@ const SideBar = () => {
           marginBottom: "1rem",
         }}
       >
-        PH-University
+        <p style={{ fontSize: "22px", padding: "5px" }}>
+          <span style={{ color: "#1890ff" }}>L</span>
+          <span style={{ color: "#52c41a" }}>A</span>
+          <span style={{ color: "#faad14" }}>T</span>
+          <span style={{ color: "#f5222d" }}>M</span>
+        </p>
       </div>
       <Menu
         theme="dark"
