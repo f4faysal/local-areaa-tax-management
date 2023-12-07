@@ -1,11 +1,7 @@
 import {
   AppstoreOutlined,
-  CreditCardOutlined,
-  FileTextOutlined,
   ProfileOutlined,
-  ScheduleOutlined,
   TableOutlined,
-  ThunderboltOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import Link from "next/link";
@@ -151,44 +147,6 @@ export const sidebarItems = (role: string) => {
           key: `/${role}/department`,
         },
       ],
-    },
-  ];
-
-  const facultySidebarItems: MenuProps["items"] = [
-    ...defaultSidebarItems,
-    {
-      label: <Link href={`/${role}/courses`}>Courses</Link>,
-      icon: <TableOutlined />,
-      key: `/${role}/courses`,
-    },
-  ];
-
-  const studentSidebarItems: MenuProps["items"] = [
-    ...defaultSidebarItems,
-    {
-      label: <Link href={`/${role}/courses`}>Courses</Link>,
-      icon: <TableOutlined />,
-      key: `/${role}/courses`,
-    },
-    {
-      label: <Link href={`/${role}/courses/schedule`}>Course schedules</Link>,
-      icon: <ScheduleOutlined />,
-      key: `/${role}/courses/schedule`,
-    },
-    {
-      label: <Link href={`/${role}/registration`}>Registration</Link>,
-      icon: <ThunderboltOutlined />,
-      key: `/${role}/registration`,
-    },
-    {
-      label: <Link href={`/${role}/payment`}>Payment</Link>,
-      icon: <CreditCardOutlined />,
-      key: `/${role}/payment`,
-    },
-    {
-      label: <Link href={`/${role}/academic-report`}>Academic report</Link>,
-      icon: <FileTextOutlined />,
-      key: `/${role}/academic-report`,
     },
   ];
 
