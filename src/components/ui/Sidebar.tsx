@@ -18,7 +18,7 @@ const SideBar = () => {
       collapsible
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
-      width={280}
+      width={230}
       className="site-layout"
     >
       <div
