@@ -7,3 +7,21 @@
   font-family: "Noto Serif Bengali", serif;
   font-family: "Open Sans", sans-serif;
 }
+
+/* Layout styles start */
+/* Sidebar */
+.site-layout {
+  overflow: auto;
+  height: 100vh;
+  position: sticky;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+/* Content */
+.content-layout {
+  min-height: 100vh;
+  color: black;
+}
+/* Layout styles end */

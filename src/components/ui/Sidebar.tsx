@@ -19,14 +19,7 @@ const SideBar = () => {
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
       width={280}
-      style={{
-        overflow: "auto",
-        height: "100vh",
-        position: "sticky",
-        left: 0,
-        top: 0,
-        bottom: 0,
-      }}
+      className="site-layout"
     >
       <div
         style={{
