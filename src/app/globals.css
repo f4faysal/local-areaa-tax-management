@@ -25,3 +25,9 @@
   color: black;
 }
 /* Layout styles end */
+
+/* @media (min-width: 480px) {
+  .site-layout {
+    display: hidden;
+  }
+} */

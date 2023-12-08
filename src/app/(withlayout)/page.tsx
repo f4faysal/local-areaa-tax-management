@@ -1,31 +1,46 @@
-import { Button, ConfigProvider } from "antd";
+import { Button, ConfigProvider, Divider, Input, Space } from "antd";
 
 export default function Home() {
   return (
     <main>
       <ConfigProvider
         theme={{
-          token: {
-            // Seed Token
-            colorPrimary: "#8dc5f8",
-            borderRadius: 2,
-
-            // Alias Token
-            colorBgContainer: "#b7dcfa",
+          components: {
+            Button: {
+              colorPrimary: "#00b96b",
+              algorithm: true, // Enable algorithm
+            },
+            Input: {
+              colorPrimary: "#eb2f96",
+              algorithm: true, // Enable algorithm
+            },
           },
         }}
       >
-        <h1>Local Areaa Tax Management</h1>
-        <Button
-          type="primary"
-          style={{
-            color: "black",
-          }}
-        >
-          Primary
-        </Button>
-        <br />
-        <Button>Default</Button>
+        <Space>
+          <div style={{ fontSize: 14 }}>Enable algorithm: </div>
+          <Input placeholder="Please Input" />
+          <Button type="primary">Submit</Button>
+        </Space>
+      </ConfigProvider>
+      <Divider />
+      <ConfigProvider
+        theme={{
+          components: {
+            Button: {
+              colorPrimary: "#00b96b",
+            },
+            Input: {
+              colorPrimary: "#eb2f96",
+            },
+          },
+        }}
+      >
+        <Space>
+          <div style={{ fontSize: 14 }}>Disable algorithm: </div>
+          <Input placeholder="Please Input" />
+          <Button type="primary">Submit</Button>
+        </Space>
       </ConfigProvider>
     </main>
   );
