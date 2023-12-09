@@ -1,9 +1,10 @@
 import {
   AppstoreOutlined,
+  LogoutOutlined,
   ProfileOutlined,
   TableOutlined,
 } from "@ant-design/icons";
-import type { MenuProps } from "antd";
+import { message, type MenuProps } from "antd";
 import Link from "next/link";
 import { USER_ROLE } from "./role";
 export const sidebarItems = (role: string) => {
@@ -14,33 +15,20 @@ export const sidebarItems = (role: string) => {
       icon: <ProfileOutlined />,
       children: [
         {
-          label: <Link href={`/${role}/profile`}>Account Profile</Link>,
+          label: <Link href={`/`}>Account Profile</Link>,
           key: `/${role}/profile`,
         },
         {
-          label: <Link href={`/${role}/change-password`}>Change Password</Link>,
+          label: <Link href={`/`}>Change Password</Link>,
           key: `/${role}/change-password`,
         },
       ],
     },
   ];
 
-  const commonAdminSidebarItems: MenuProps["items"] = [
-    {
-      label: <Link href={`/${role}/manage-student`}>Manage Students</Link>,
-      icon: <TableOutlined />,
-      key: `/${role}/manage-student`,
-    },
-    {
-      label: <Link href={`/${role}/manage-faculty`}>Manage Faculty</Link>,
-      icon: <TableOutlined />,
-      key: `/${role}/manage-faculty`,
-    },
-  ];
-
   const adminSidebarItems: MenuProps["items"] = [
     ...defaultSidebarItems,
-    ...commonAdminSidebarItems,
+
     {
       label: "Manage academic",
       key: "manage-academic",
@@ -111,7 +99,7 @@ export const sidebarItems = (role: string) => {
 
   const superAdminSidebarItems: MenuProps["items"] = [
     ...defaultSidebarItems,
-    ...commonAdminSidebarItems,
+
     {
       label: <Link href={`/${role}/admin`}>Manage Admin</Link>,
       icon: <TableOutlined />,
@@ -146,9 +134,29 @@ export const sidebarItems = (role: string) => {
     },
   ];
 
+  const logout: MenuProps["items"] = [
+    {
+      label: (
+        <p
+          onClick={() => {
+            message.success("Logout successfully");
+          }}
+        >
+          Log Out
+        </p>
+      ),
+      icon: (
+        <LogoutOutlined
+          onClick={() => {
+            message.success("Logout successfully");
+          }}
+        />
+      ),
+      key: `/logout`,
+    },
+  ];
+
   if (role === USER_ROLE.SUPER_ADMIN) return superAdminSidebarItems;
   else if (role === USER_ROLE.ADMIN) return adminSidebarItems;
-  else {
-    return defaultSidebarItems;
-  }
+  else return logout;
 };
