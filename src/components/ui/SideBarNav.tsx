@@ -77,7 +77,7 @@ const SideBarNav: React.FC<SideBarNavProps> = ({ collapsed }) => {
           justifyContent: "center",
           flexDirection: "row",
           gap: "0.5rem",
-          padding: "0.3rem 1rem",
+          padding: "0.3rem 1rem 1.5rem 1rem",
         }}
       >
         <div>

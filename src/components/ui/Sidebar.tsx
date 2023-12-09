@@ -39,6 +39,17 @@ const SideBar: React.FC<SideBarProps> = ({
           mode="inline"
           items={sidebarItems(role)}
         />
+
+        <Menu
+          style={{
+            marginTop: "200px",
+          }}
+          theme="light"
+          defaultSelectedKeys={["1"]}
+          defaultOpenKeys={["logout"]}
+          mode="inline"
+          items={sidebarItems("logout")}
+        />
       </Drawer>
 
       <Sider
@@ -59,7 +70,7 @@ const SideBar: React.FC<SideBarProps> = ({
         <Menu
           theme="light"
           defaultSelectedKeys={["1"]}
-          defaultOpenKeys={["profile"]}
+          defaultOpenKeys={["dashboard"]}
           mode="inline"
           items={sidebarItems(role)}
         />
@@ -75,7 +86,7 @@ const SideBar: React.FC<SideBarProps> = ({
           <Menu
             theme="light"
             defaultSelectedKeys={["1"]}
-            defaultOpenKeys={["sub1"]}
+            defaultOpenKeys={["logout"]}
             mode="inline"
             items={sidebarItems("logout")}
           />
