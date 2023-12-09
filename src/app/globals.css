@@ -28,6 +28,17 @@
 .content-layout {
   min-height: 100vh;
   color: black;
+  padding: 1rem;
+}
+
+/* Header */
+.header-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 /* Layout styles end */
 

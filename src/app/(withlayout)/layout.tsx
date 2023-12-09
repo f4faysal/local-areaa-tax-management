@@ -39,8 +39,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
         <Sider
           theme="light"
+          trigger={null}
           collapsible
-          onCollapse={(value) => setCollapsed(value)}
+          // onCollapse={(value) => setCollapsed(value)}
           breakpoint="md"
           width={240}
           collapsed={collapsed}
@@ -73,7 +74,13 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           />
         </Sider>
       </>
-      <Contents>{children}</Contents>
+      <Contents
+        collapsed={collapsed}
+        setCollapsed={setCollapsed}
+        setToggled={setToggled}
+      >
+        {children}
+      </Contents>
     </Layout>
   );
 };
