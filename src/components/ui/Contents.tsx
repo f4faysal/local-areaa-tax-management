@@ -1,5 +1,6 @@
 "use client";
 import { Layout } from "antd";
+import React from "react";
 import UMBreadCrumb from "./UMBreadCrumb";
 
 const { Content } = Layout;
@@ -20,6 +21,7 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
           },
         ]}
       />
+
       {children}
     </Content>
   );

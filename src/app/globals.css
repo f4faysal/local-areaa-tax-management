@@ -18,7 +18,12 @@
   top: 0;
   bottom: 0;
 }
-
+.hideOnDesktop {
+  display: block;
+}
+.hideOnMobile {
+  display: none;
+}
 /* Content */
 .content-layout {
   min-height: 100vh;
@@ -26,8 +31,14 @@
 }
 /* Layout styles end */
 
-/* @media (min-width: 480px) {
-  .site-layout {
-    display: hidden;
+@media only screen and (min-width: 768px) {
+  .hideOnMobile {
+    display: block;
   }
-} */
+}
+
+@media only screen and (min-width: 768px) {
+  .hideOnDesktop {
+    display: none;
+  }
+}
