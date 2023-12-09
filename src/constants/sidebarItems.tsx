@@ -1,5 +1,7 @@
 import {
   AppstoreOutlined,
+  CodeSandboxOutlined,
+  LaptopOutlined,
   LogoutOutlined,
   ProfileOutlined,
   TableOutlined,
@@ -9,6 +11,18 @@ import Link from "next/link";
 import { USER_ROLE } from "./role";
 export const sidebarItems = (role: string) => {
   const defaultSidebarItems: MenuProps["items"] = [
+    {
+      label: "Dashboard",
+      key: "dashboard",
+      icon: <LaptopOutlined />,
+      children: [
+        {
+          label: <Link href={`/`}>Analytics</Link>,
+          icon: <CodeSandboxOutlined />,
+          key: `/dashboard/analytics`,
+        },
+      ],
+    },
     {
       label: "Profile",
       key: "profile",
