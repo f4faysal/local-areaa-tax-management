@@ -2,21 +2,22 @@
 import { PicRightOutlined } from "@ant-design/icons";
 import { Button, Layout, theme } from "antd";
 import { Header } from "antd/es/layout/layout";
-import React from "react";
 import UMBreadCrumb from "./UMBreadCrumb";
 
 const { Content } = Layout;
 
-const Contents = ({
+interface ContentsProps {
+  setToggled: (value: boolean) => void;
+  setCollapsed: (value: boolean) => void;
+  collapsed: boolean;
+  children: React.ReactNode;
+}
+
+const Contents: React.FC<ContentsProps> = ({
   children,
   setToggled,
   setCollapsed,
   collapsed,
-}: {
-  children: React.ReactNode;
-  setToggled: any;
-  setCollapsed: any;
-  collapsed: boolean;
 }) => {
   const {
     token: { colorBgContainer },
@@ -35,10 +36,11 @@ const Contents = ({
           top: 0,
           zIndex: 100,
           borderRadius: "0.5rem",
+          marginBottom: "1rem",
         }}
       >
-        <div className="hideOnMobile d-flex">
-          <div>
+        <div className="_d-flex">
+          <div className="hideOnMobile">
             <Button
               onClick={() => setCollapsed(!collapsed)}
               type="text"

@@ -1,75 +1,25 @@
-// "use client";
-
-// import { Layout, Menu } from "antd";
-// import { useState } from "react";
-
-// import { USER_ROLE } from "@/constants/role";
-// import { sidebarItems } from "@/constants/sidebarItems";
-
-// const { Sider } = Layout;
-
-// const SideBar = () => {
-//   const [collapsed, setCollapsed] = useState(false);
-
-//   const role = USER_ROLE.ADMIN;
-
-//   return (
-//     <Sider
-//       theme="light"
-//       collapsible
-//       collapsed={collapsed}
-//       onCollapse={(value) => setCollapsed(value)}
-//       width={240}
-//       className="site-layout"
-//       hidden={false}
-//     >
-//       <div
-//         style={{
-//           color: "white",
-//           fontSize: "2rem",
-//           textAlign: "center",
-//           fontWeight: "bold",
-//           marginBottom: "1rem",
-//         }}
-//       >
-//         <p hidden style={{ fontSize: "22px", padding: "5px" }}>
-//           <span style={{ color: "#1890ff" }}>L</span>
-//           <span style={{ color: "#52c41a" }}>A</span>
-//           <span style={{ color: "#faad14" }}>T</span>
-//           <span style={{ color: "#f5222d" }}>M</span>
-//         </p>
-//       </div>
-//       <Menu
-//         theme="light"
-//         defaultSelectedKeys={["1"]}
-//         mode="inline"
-//         items={sidebarItems(role)}
-//       />
-//     </Sider>
-//   );
-// };
-
-// export default SideBar;
-
 "use client";
 
 import { Drawer, Layout, Menu } from "antd";
-import { useState } from "react";
 
 import { USER_ROLE } from "@/constants/role";
 import { sidebarItems } from "@/constants/sidebarItems";
 
 const { Sider } = Layout;
 
-const SideBar = () => {
-  const [collapsed, setCollapsed] = useState(false);
+interface SideBarProps {
+  onClose: () => void;
+  isToggled: boolean;
+  collapsed: boolean;
+  setToggled: (value: boolean) => void;
+}
 
-  // sider and drawer toggle
-  const [isToggled, setToggled] = useState(false);
-  const toggleTrueFalse = () => setToggled(!isToggled);
-  const onClose = () => {
-    setToggled(false);
-  };
+const SideBar: React.FC<SideBarProps> = ({
+  onClose,
+  isToggled,
+  collapsed,
+  setToggled,
+}) => {
   const role = USER_ROLE.ADMIN;
 
   return (
@@ -77,13 +27,13 @@ const SideBar = () => {
       <Drawer
         placement="left"
         onClose={onClose}
+        width={240}
         closable={false}
-        visible={isToggled}
+        open={isToggled}
         className="hideOnDesktop"
-        style={{ backgroundColor: "#001529", padding: "0" }}
       >
         <Menu
-          theme="dark"
+          theme="light"
           defaultSelectedKeys={["1"]}
           mode="inline"
           items={sidebarItems(role)}
@@ -92,16 +42,12 @@ const SideBar = () => {
 
       <Sider
         theme="light"
+        trigger={null}
         collapsible
-        // collapsed={collapsed}
-        onCollapse={(value) => setCollapsed(value)}
-        // width={240}
-        // className="site-layout"
-        // hidden={false}
-
-        collapsedWidth="0"
+        // onCollapse={(value) => setCollapsed(value)}
+        breakpoint="md"
         width={240}
-        collapsed={isToggled}
+        collapsed={collapsed}
         onBreakpoint={(broken) => {
           setToggled(broken);
         }}
