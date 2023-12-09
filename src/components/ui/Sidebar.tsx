@@ -30,13 +30,104 @@ const SideBar: React.FC<SideBarProps> = ({
   return (
     <>
       <Drawer
-        width={240}
+        width={290}
         closable={false}
         placement="left"
         onClose={onClose}
         open={isToggled}
-        className="hideOnDesktop"
+        className="hideOnDesktop drawer-layout"
       >
+        <div
+          style={{
+            backgroundColor: "#f6ffed",
+            borderRadius: "10px",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "5px 1rem 1rem 1rem",
+              gap: "10px",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                flexDirection: "row",
+                gap: "0.5rem",
+              }}
+            >
+              <Avatar size="small" icon={<IeOutlined />} />
+              <p
+                style={{
+                  fontSize: "0.7rem",
+                  color: "black",
+                  backgroundColor: "#ebeef3",
+                  borderRadius: "5px",
+                  fontWeight: "bold",
+                  padding: "0.2rem 0.5rem",
+                }}
+              >
+                UP Tax Management
+              </p>
+              <p
+                style={{
+                  fontSize: "0.7rem",
+                  color: "#092b00",
+                  backgroundColor: "#ebeef3",
+                  borderRadius: "5px",
+                  fontWeight: "bold",
+                  padding: "0.2rem 0.5rem",
+                }}
+              >
+                1.0
+              </p>
+            </div>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "row",
+              gap: "0.5rem",
+              padding: "0.3rem 1rem",
+            }}
+          >
+            <div>
+              <Avatar size="large" icon={<UserOutlined />} />
+            </div>
+            <div style={{ width: "100%" }}>
+              <p
+                style={{
+                  paddingBottom: "0.2rem",
+                }}
+              >
+                <strong>Md Faysal Hossain</strong>
+              </p>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+
+                  flexDirection: "row",
+                  gap: "0.5rem",
+                }}
+              >
+                <small>
+                  <strong>Admin</strong>
+                </small>
+                <SettingOutlined /> <AppstoreFilled /> <UserOutlined />
+              </div>
+            </div>
+          </div>
+        </div>
         <Menu
           theme="light"
           defaultSelectedKeys={["1"]}
@@ -150,6 +241,7 @@ const SideBar: React.FC<SideBarProps> = ({
             </div>
           </div>
         </div>
+
         <Menu
           theme="light"
           defaultSelectedKeys={["1"]}

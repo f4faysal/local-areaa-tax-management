@@ -24,6 +24,12 @@
 .hideOnMobile {
   display: none;
 }
+.drawer-layout {
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 100vh;
+}
+
 /* Content */
 .content-layout {
   min-height: 100vh;
