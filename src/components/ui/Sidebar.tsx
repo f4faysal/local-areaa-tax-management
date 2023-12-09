@@ -1,9 +1,14 @@
 "use client";
-
-import { Drawer, Layout, Menu } from "antd";
-
 import { USER_ROLE } from "@/constants/role";
 import { sidebarItems } from "@/constants/sidebarItems";
+import { Avatar, Drawer, Layout, Menu } from "antd";
+
+import {
+  AppstoreFilled,
+  IeOutlined,
+  SettingOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 
 const { Sider } = Layout;
 
@@ -25,10 +30,10 @@ const SideBar: React.FC<SideBarProps> = ({
   return (
     <>
       <Drawer
-        placement="left"
-        onClose={onClose}
         width={240}
         closable={false}
+        placement="left"
+        onClose={onClose}
         open={isToggled}
         className="hideOnDesktop"
       >
@@ -55,19 +60,95 @@ const SideBar: React.FC<SideBarProps> = ({
       >
         <div
           style={{
-            color: "white",
-            fontSize: "2rem",
-            textAlign: "center",
-            fontWeight: "bold",
-            marginBottom: "1rem",
+            backgroundColor: "#f6ffed",
           }}
         >
-          <p hidden style={{ fontSize: "22px", padding: "5px" }}>
-            <span style={{ color: "#1890ff" }}>L</span>
-            <span style={{ color: "#52c41a" }}>A</span>
-            <span style={{ color: "#faad14" }}>T</span>
-            <span style={{ color: "#f5222d" }}>M</span>
-          </p>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "5px 1rem 1rem 1rem",
+              gap: "10px",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                flexDirection: "row",
+                gap: "0.5rem",
+              }}
+            >
+              <Avatar size="small" icon={<IeOutlined />} />
+              <p
+                style={{
+                  fontSize: "0.7rem",
+                  color: "black",
+                  backgroundColor: "#ebeef3",
+                  borderRadius: "5px",
+                  fontWeight: "bold",
+                  padding: "0.2rem 0.5rem",
+                }}
+                hidden={collapsed}
+              >
+                UP Tax Management
+              </p>
+              <p
+                hidden={collapsed}
+                style={{
+                  fontSize: "0.7rem",
+                  color: "#092b00",
+                  backgroundColor: "#ebeef3",
+                  borderRadius: "5px",
+                  fontWeight: "bold",
+                  padding: "0.2rem 0.5rem",
+                }}
+              >
+                1.0
+              </p>
+            </div>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "row",
+              gap: "0.5rem",
+              padding: "0.3rem 1rem",
+            }}
+          >
+            <div>
+              <Avatar size="large" icon={<UserOutlined />} />
+            </div>
+            <div style={{ width: "100%" }} hidden={collapsed}>
+              <p
+                style={{
+                  paddingBottom: "0.2rem",
+                }}
+              >
+                <strong>Md Faysal Hossain</strong>
+              </p>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+
+                  flexDirection: "row",
+                  gap: "0.5rem",
+                }}
+              >
+                <small>
+                  <strong>Admin</strong>
+                </small>
+                <SettingOutlined /> <AppstoreFilled /> <UserOutlined />
+              </div>
+            </div>
+          </div>
         </div>
         <Menu
           theme="light"
