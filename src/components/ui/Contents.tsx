@@ -37,26 +37,31 @@ const Contents = ({
           borderRadius: "0.5rem",
         }}
       >
-        <div className="hideOnMobile">
-          <Button
-            onClick={() => setCollapsed(!collapsed)}
-            type="text"
-            icon={<PicRightOutlined />}
-            size={"large"}
-          />
+        <div className="hideOnMobile d-flex">
+          <div>
+            <Button
+              onClick={() => setCollapsed(!collapsed)}
+              type="text"
+              icon={<PicRightOutlined />}
+              size={"large"}
+            />
+          </div>
+          <div>
+            <UMBreadCrumb
+              items={[
+                {
+                  label: `${base}`,
+                  link: `/${base}`,
+                },
+                {
+                  label: "student",
+                  link: `/${base}/student`,
+                },
+              ]}
+            />
+          </div>
         </div>
-        <UMBreadCrumb
-          items={[
-            {
-              label: `${base}`,
-              link: `/${base}`,
-            },
-            {
-              label: "student",
-              link: `/${base}/student`,
-            },
-          ]}
-        />
+
         <div className="hideOnDesktop">
           <Button
             onClick={() => setToggled(true)}
