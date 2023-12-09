@@ -28,7 +28,6 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           closable={false}
           open={isToggled}
           className="hideOnDesktop"
-          style={{ backgroundColor: "#001529", padding: "0" }}
         >
           <Menu
             theme="light"
