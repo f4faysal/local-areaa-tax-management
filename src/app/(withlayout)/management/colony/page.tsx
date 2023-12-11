@@ -1,5 +1,5 @@
-const page = () => {
+const Colony = () => {
   return <div>colony</div>;
 };
 
-export default page;
+export default Colony;

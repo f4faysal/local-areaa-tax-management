@@ -1,5 +1,5 @@
-const page = () => {
+const Permission = () => {
   return <div>permission</div>;
 };
 
-export default page;
+export default Permission;
