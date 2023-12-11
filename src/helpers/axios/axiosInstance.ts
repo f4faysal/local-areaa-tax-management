@@ -1,46 +1,52 @@
 import { authKey } from "@/constants/storageKey";
-import { ResponseErrorType, ResponseSuccessType } from "@/types";
-import { getFormLocalStorage } from "@/utils/local-sororage";
+import { getFromLocalStorage } from "@/utils/local-sororage";
+
 import axios from "axios";
 
-const axiosInstance = axios.create();
-
-axiosInstance.defaults.headers.post["Content-Type"] = "application/json";
-axiosInstance.defaults.headers["Accept"] = "application/json";
-axiosInstance.defaults.timeout = 60000;
+const instance = axios.create();
+instance.defaults.headers.post["Content-Type"] = "application/json";
+instance.defaults.headers["Accept"] = "application/json";
+instance.defaults.timeout = 60000;
 
 // Add a request interceptor
-axiosInstance.interceptors.request.use(
+instance.interceptors.request.use(
   function (config) {
-    const accessToken = getFormLocalStorage(authKey);
+    // Do something before request is sent
+    const accessToken = getFromLocalStorage(authKey);
     if (accessToken) {
       config.headers.Authorization = accessToken;
     }
-    // Do something before request is sent
     return config;
   },
   function (error) {
+    // Do something with request error
     return Promise.reject(error);
   }
 );
 
-axiosInstance.interceptors.response.use(
-  function (response): any {
-    const modifiedResponse: ResponseSuccessType = {
+// Add a response interceptor
+instance.interceptors.response.use(
+  //@ts-ignore
+  function (response) {
+    const responseObject = {
       data: response?.data?.data,
       meta: response?.data?.meta,
     };
-    return modifiedResponse;
+    return responseObject;
   },
-  function (error) {
-    const modifiedErrorResponse: ResponseErrorType = {
-      statusCode: error?.response?.data?.statusCode || 500,
-      message: error?.response?.data?.message || "Something went wrong",
-      errorMessages: error?.response?.data?.errorMessages,
-    };
+  async function (error) {
+    if (error?.response?.status === 403) {
+    } else {
+      const responseObject = {
+        statusCode: error?.response?.data?.statusCode || 500,
+        message: error?.response?.data?.message || "Something went wrong",
+        errorMessages: error?.response?.data?.message,
+      };
+      return responseObject;
+    }
 
-    return modifiedErrorResponse;
+    // return Promise.reject(error);
   }
 );
 
-export { axiosInstance };
+export { instance };

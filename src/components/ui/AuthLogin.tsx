@@ -22,18 +22,17 @@ const AuthLogin = () => {
   const { xs, md } = useBreakpoint();
   const fontSize = (md && 1) || (xs && 2);
 
-  const [UserLogin] = useUserLoginMutation();
+  const [UserLogin, { isLoading }] = useUserLoginMutation();
 
   const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
     try {
       const res: any = await UserLogin(data);
-      console.log(res);
       if (res?.data?.accessToken) {
         router.push("/");
         message.success("User Login Success");
         storeUserInfo({ accessToken: res?.data?.accessToken });
       } else {
-        message.error("User Login Fail try again later");
+        message.error(res.error);
       }
     } catch (error) {
       console.error(error);
@@ -130,7 +129,7 @@ const AuthLogin = () => {
               {/* <Divider /> */}
               <Button
                 htmlType="submit"
-                // loading={loading}
+                loading={isLoading}
                 style={{
                   width: "100%",
                   margin: "15px 0 0 0",
