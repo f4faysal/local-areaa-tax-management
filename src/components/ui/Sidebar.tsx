@@ -58,7 +58,7 @@ const SideBar: React.FC<SideBarProps> = ({
         collapsible
         // onCollapse={(value) => setCollapsed(value)}
         breakpoint="md"
-        width={240}
+        width={260}
         collapsed={collapsed}
         onBreakpoint={(broken) => {
           setToggled(broken);
