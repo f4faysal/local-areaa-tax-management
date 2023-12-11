@@ -1,5 +1,12 @@
+import AuthLogin from "@/components/ui/AuthLogin";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Auth Login",
+};
+
 const LoginPage = () => {
-  return <div>hey</div>;
+  return <AuthLogin />;
 };
 
 export default LoginPage;
