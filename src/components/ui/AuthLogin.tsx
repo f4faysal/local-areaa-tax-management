@@ -91,11 +91,11 @@ const AuthLogin = () => {
             <>
               <div>
                 <FormInput
-                  name="email"
-                  type="email"
+                  name="contact_no"
+                  type="phone"
                   size="large"
-                  placeholder="Enter your email"
-                  label="User Email"
+                  placeholder="Your Registered Number"
+                  label="Phone Number"
                 />
               </div>
               <div
@@ -111,15 +111,32 @@ const AuthLogin = () => {
                   label="User Password"
                 />
               </div>
-              <Button
-                style={{
-                  width: "100%",
-                  margin: "15px 0",
+              {/* <ConfigProvider
+                theme={{
+                  components: {
+                    Button: {
+                      colorPrimary: "#00b96b",
+                      algorithm: true, // Enable algorithm
+                    },
+                    Input: {
+                      colorPrimary: "#eb2f96",
+                      algorithm: true, // Enable algorithm
+                    },
+                  },
                 }}
-                type="primary"
+              >
+                
+              </ConfigProvider> */}
+              {/* <Divider /> */}
+              <Button
                 htmlType="submit"
                 // loading={loading}
+                style={{
+                  width: "100%",
+                  margin: "15px 0 0 0",
+                }}
                 size="large"
+                type="primary"
               >
                 Login
               </Button>
