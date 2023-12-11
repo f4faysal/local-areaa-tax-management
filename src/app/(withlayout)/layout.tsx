@@ -5,9 +5,14 @@ import { Layout } from "antd";
 import { useState } from "react";
 
 import SideBar from "@/components/ui/Sidebar";
-import { USER_ROLE } from "@/constants/role";
+import { getUserInfo } from "@/services/auth.service";
+import { useRouter } from "next/navigation";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+  const router = useRouter();
+
+  const { role, userId } = getUserInfo() as { role: string; userId: string };
+
   // sider and drawer toggle
   const [collapsed, setCollapsed] = useState(false);
   const [isToggled, setToggled] = useState(false);
@@ -17,7 +22,11 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const onClose = () => {
     setToggled(false);
   };
-  const role = USER_ROLE.ADMIN;
+
+  if (userId === undefined || role === undefined) {
+    return router.push("/auth/login");
+  }
+
   return (
     <Layout hasSider>
       <SideBar
