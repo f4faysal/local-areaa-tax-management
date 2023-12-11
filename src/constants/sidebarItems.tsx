@@ -1,16 +1,23 @@
 import { removeUserInfo } from "@/services/auth.service";
 import {
-  AppstoreOutlined,
+  AppstoreAddOutlined,
+  CalendarOutlined,
   CodeSandboxOutlined,
+  EyeInvisibleOutlined,
+  HomeOutlined,
+  IdcardOutlined,
   LaptopOutlined,
   LogoutOutlined,
-  ProfileOutlined,
-  TableOutlined,
+  PaperClipOutlined,
+  UnlockOutlined,
+  UserOutlined,
+  UsergroupAddOutlined,
 } from "@ant-design/icons";
 import { message, type MenuProps } from "antd";
 import Link from "next/link";
 import { USER_ROLE } from "./role";
 import { authKey } from "./storageKey";
+
 export const sidebarItems = (role: string) => {
   const defaultSidebarItems: MenuProps["items"] = [
     {
@@ -19,24 +26,26 @@ export const sidebarItems = (role: string) => {
       icon: <LaptopOutlined />,
       children: [
         {
-          label: <Link href={`/`}>Analytics</Link>,
+          label: <Link href={`/dashboard`}>Analytics</Link>,
           icon: <CodeSandboxOutlined />,
           key: `/dashboard/analytics`,
         },
       ],
     },
     {
-      label: "Profile",
-      key: "profile",
-      icon: <ProfileOutlined />,
+      label: "Account",
+      key: "account",
+      icon: <IdcardOutlined />,
       children: [
         {
-          label: <Link href={`/`}>Account Profile</Link>,
-          key: `/${role}/profile`,
+          label: <Link href={`/account/profile`}>Profile</Link>,
+          key: `/account/profile`,
+          icon: <UserOutlined />,
         },
         {
-          label: <Link href={`/`}>Change Password</Link>,
-          key: `/${role}/change-password`,
+          label: <Link href={`/account/change-password`}>Change Password</Link>,
+          icon: <EyeInvisibleOutlined />,
+          key: `/account/change-password`,
         },
       ],
     },
@@ -44,109 +53,51 @@ export const sidebarItems = (role: string) => {
 
   const adminSidebarItems: MenuProps["items"] = [
     ...defaultSidebarItems,
-
     {
-      label: "Manage academic",
-      key: "manage-academic",
-      icon: <TableOutlined />,
+      label: "Home",
+      key: "home",
+      icon: <HomeOutlined />,
       children: [
         {
-          label: <Link href={`/${role}/academic/department`}>Departments</Link>,
-          key: `/${role}/academic/department`,
-        },
-        {
-          label: <Link href={`/${role}/academic/semester`}>Semesters</Link>,
-          key: `/${role}/academic/semester`,
+          label: <Link href={`/home-register`}>Home Register</Link>,
+          key: `/home-register`,
+          icon: <PaperClipOutlined />,
         },
       ],
     },
     {
       label: "Management",
       key: "management",
-      icon: <AppstoreOutlined />,
+      icon: <AppstoreAddOutlined />,
       children: [
         {
-          label: <Link href={`/${role}/department`}>Department</Link>,
-          key: `/${role}/department`,
-        },
-        {
-          label: <Link href={`/${role}/building`}>Building</Link>,
-          key: `/${role}/building`,
-        },
-        {
-          label: <Link href={`/${role}/room`}>Rooms</Link>,
-          key: `/${role}/room`,
-        },
-        {
-          label: <Link href={`/${role}/course`}>Course</Link>,
-          key: `/${role}/course`,
+          label: <Link href={`/management/colony`}>Create Colony</Link>,
+          icon: <HomeOutlined />,
+          key: `/management/colony`,
         },
         {
           label: (
-            <Link href={`/${role}/semester-registration`}>
-              Semester registration
-            </Link>
+            <Link href={`/management/financial-year`}>Financial Year</Link>
           ),
-          key: `/${role}/semester-registration`,
-        },
-        {
-          label: <Link href={`/${role}/offered-course`}>Offered courses</Link>,
-          key: `/${role}/offered-course`,
-        },
-        {
-          label: (
-            <Link href={`/${role}/offered-course-section`}>
-              Course sections
-            </Link>
-          ),
-          key: `/${role}/offered-course-section`,
-        },
-        {
-          label: (
-            <Link href={`/${role}/offered-course-schedule`}>
-              Course schedules
-            </Link>
-          ),
-          key: `/${role}/offered-course-schedule`,
+          icon: <CalendarOutlined />,
+          key: `/management/financial-year`,
         },
       ],
     },
   ];
 
   const superAdminSidebarItems: MenuProps["items"] = [
-    ...defaultSidebarItems,
+    ...adminSidebarItems,
 
     {
-      label: <Link href={`/${role}/admin`}>Manage Admin</Link>,
-      icon: <TableOutlined />,
-      key: `/${role}/admin`,
+      label: <Link href={`/account/admin`}>Create Admin</Link>,
+      icon: <UsergroupAddOutlined />,
+      key: `/account/admin`,
     },
     {
-      label: <Link href={`/${role}/user`}>Manage User</Link>,
-      icon: <TableOutlined />,
-      key: `/${role}/user`,
-    },
-    {
-      label: "Manage permission",
-      key: "manage-permission",
-      icon: <AppstoreOutlined />,
-      children: [
-        {
-          label: <Link href={`/${role}/permission`}>View permissions</Link>,
-          key: `/${role}/permission`,
-        },
-      ],
-    },
-    {
-      label: "Management",
-      key: "management",
-      icon: <AppstoreOutlined />,
-      children: [
-        {
-          label: <Link href={`/${role}/department`}>Department</Link>,
-          key: `/${role}/department`,
-        },
-      ],
+      label: <Link href={`/account/permission`}>Manage Permission</Link>,
+      icon: <UnlockOutlined />,
+      key: `/account/permission`,
     },
   ];
 
@@ -174,7 +125,7 @@ export const sidebarItems = (role: string) => {
     },
   ];
 
-  if (role === USER_ROLE.SUPER_ADMIN) return superAdminSidebarItems;
+  if (role === USER_ROLE.ADMIN) return superAdminSidebarItems;
   else if (role === USER_ROLE.ADMIN) return adminSidebarItems;
   else return logout;
 };
