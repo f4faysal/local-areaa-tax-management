@@ -22,7 +22,7 @@ const AuthLogin = () => {
   const { xs, md } = useBreakpoint();
   const fontSize = (md && 1) || (xs && 2);
 
-  const [UserLogin, { isLoading }] = useUserLoginMutation();
+  const [UserLogin, { isLoading, isError }] = useUserLoginMutation();
 
   const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
     try {
@@ -90,8 +90,9 @@ const AuthLogin = () => {
             <>
               <div>
                 <FormInput
+                  isError={isError}
                   name="contact_no"
-                  type="phone"
+                  type="tel"
                   size="large"
                   placeholder="Your Registered Number"
                   label="Phone Number"
@@ -103,6 +104,7 @@ const AuthLogin = () => {
                 }}
               >
                 <FormInput
+                  isError={isError}
                   name="password"
                   type="password"
                   size="large"

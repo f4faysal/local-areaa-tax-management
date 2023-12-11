@@ -12,6 +12,7 @@ interface IInput {
   placeholder?: string;
   validation?: string;
   label?: string;
+  isError?: boolean;
 }
 
 const FormInput = ({
@@ -23,6 +24,7 @@ const FormInput = ({
   placeholder,
   validation,
   label,
+  isError,
 }: IInput) => {
   const {
     control,
@@ -43,6 +45,7 @@ const FormInput = ({
               {...field}
               type={type}
               size={size}
+              status={isError ? "error" : ""}
               placeholder={placeholder}
               value={value ? value : field.value}
             />
@@ -51,6 +54,7 @@ const FormInput = ({
               {...field}
               type={type}
               size={size}
+              status={isError ? "error" : ""}
               placeholder={placeholder}
               value={value ? value : field.value}
             />
