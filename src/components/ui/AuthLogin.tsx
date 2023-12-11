@@ -1,10 +1,11 @@
 "use client";
 
-import { storeUserInfo } from "@/services/auth.service";
-import { Button, Col, Row, message } from "antd";
-import Link from "next/link";
+import { Button, Col, Row, Typography, message } from "antd";
+import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { useRouter } from "next/navigation";
 import { SubmitHandler } from "react-hook-form";
+
+import { storeUserInfo } from "@/services/auth.service";
 import Form from "../Forms/form";
 import FormInput from "../Forms/formInput";
 
@@ -15,6 +16,11 @@ type FormValues = {
 
 const AuthLogin = () => {
   const router = useRouter();
+  const { Title } = Typography;
+
+  const { xs, md } = useBreakpoint();
+
+  const fontSize = (md && 1) || (xs && 2);
 
   const onSubmit: SubmitHandler<FormValues> = async (data: any) => {
     console.log(data);
@@ -43,7 +49,11 @@ const AuthLogin = () => {
         backgroundColor: "#f8fafc",
       }}
     >
-      <Col span={5}>
+      <Col
+        xs={{ span: 16, offset: 0 }}
+        md={{ span: 10, offset: 0 }}
+        lg={{ span: 5, offset: 0 }}
+      >
         <div
           style={{
             padding: "80px 20px 40px 20px",
@@ -55,20 +65,26 @@ const AuthLogin = () => {
         >
           <div
             style={{
-              height: "120px",
+              height: "100px",
+              top: "-50px",
               borderRadius: "20px",
               width: "90%",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               position: "absolute",
-              top: "-70px",
+
               backgroundColor: "black",
               color: "white",
               padding: "0 10px",
             }}
           >
-            <h1 style={{ fontSize: "2.5rem" }}>Sign In</h1>
+            <Title
+              level={fontSize || 1}
+              style={{ color: "white", padding: 0, margin: 0 }}
+            >
+              Sign In
+            </Title>
           </div>
 
           <Form submitHandler={onSubmit}>
@@ -102,28 +118,11 @@ const AuthLogin = () => {
                 }}
                 type="primary"
                 htmlType="submit"
+                // loading={loading}
+                size="large"
               >
                 Login
               </Button>
-
-              <p
-                style={{
-                  textAlign: "center",
-                  marginTop: "10px",
-                }}
-              >
-                Don`t have an account? &nbsp;
-                <Link
-                  style={{
-                    color: "black",
-                    fontWeight: "bold",
-                    fontSize: "15px",
-                  }}
-                  href="/register"
-                >
-                  Sign up
-                </Link>
-              </p>
             </>
           </Form>
         </div>
