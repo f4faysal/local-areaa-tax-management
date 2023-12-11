@@ -1,3 +1,4 @@
+import { removeUserInfo } from "@/services/auth.service";
 import {
   AppstoreOutlined,
   CodeSandboxOutlined,
@@ -9,6 +10,7 @@ import {
 import { message, type MenuProps } from "antd";
 import Link from "next/link";
 import { USER_ROLE } from "./role";
+import { authKey } from "./storageKey";
 export const sidebarItems = (role: string) => {
   const defaultSidebarItems: MenuProps["items"] = [
     {
@@ -153,6 +155,8 @@ export const sidebarItems = (role: string) => {
       label: (
         <p
           onClick={() => {
+            removeUserInfo(authKey);
+            window.location.href = "/auth/login";
             message.success("Logout successfully");
           }}
         >
