@@ -11,7 +11,7 @@ const authApi = baseApi.injectEndpoints({
         method: "POST",
         data: loginData,
       }),
-      invalidatesTags: [tagTypes.admin],
+      invalidatesTags: [tagTypes.auth],
     }),
   }),
 });

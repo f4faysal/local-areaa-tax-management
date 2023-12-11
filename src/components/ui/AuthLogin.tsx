@@ -5,12 +5,13 @@ import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { useRouter } from "next/navigation";
 import { SubmitHandler } from "react-hook-form";
 
+import { useUserLoginMutation } from "@/redux/api/authApi";
 import { storeUserInfo } from "@/services/auth.service";
 import Form from "../Forms/form";
 import FormInput from "../Forms/formInput";
 
 type FormValues = {
-  id: string;
+  contact_no: string;
   password: string;
 };
 
@@ -19,15 +20,14 @@ const AuthLogin = () => {
   const { Title } = Typography;
 
   const { xs, md } = useBreakpoint();
-
   const fontSize = (md && 1) || (xs && 2);
 
-  const onSubmit: SubmitHandler<FormValues> = async (data: any) => {
-    console.log(data);
-    try {
-      const res: any = {};
-      console.log(res);
+  const [UserLogin] = useUserLoginMutation();
 
+  const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
+    try {
+      const res: any = await UserLogin(data);
+      console.log(res);
       if (res?.data?.accessToken) {
         router.push("/");
         message.success("User Login Success");
