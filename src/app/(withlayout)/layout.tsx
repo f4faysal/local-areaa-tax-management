@@ -23,9 +23,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
     setToggled(false);
   };
 
-  if (userId === undefined || role === undefined) {
-    return router.push("/auth/login");
-  }
+  // if (userId === undefined || role === undefined) {
+  //   return router.push("/auth/login");
+  // }
 
   return (
     <Layout hasSider>
