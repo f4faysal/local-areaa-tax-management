@@ -2,9 +2,11 @@
 
 import Form from "@/components/forms/form";
 import FormInput from "@/components/forms/formInput";
-import SMBreadcrumb from "@/components/ui/Breadcrumb";
+// import Form from "@/components/forms/form";
+// import FormInput from "@/components/forms/formInput";
+// import SMBreadcrumb from "@/components/ui/Breadcrumb";
 import ImageUpload from "@/components/ui/image-upload";
-import { useCreateCategorieMutation } from "@/redux/api/categorieApi";
+// import { useCreateCategorieMutation } from "@/redux/api/categorieApi";
 import { getUserInfo } from "@/services/auth.service";
 import { Avatar, Button, Col, Row, message } from "antd";
 import { useState } from "react";
@@ -16,7 +18,7 @@ const CreateCategoriePage = () => {
   );
 
   //   const [addDepartment] = useAddDepartmentMutation();
-  const [createCategorie] = useCreateCategorieMutation();
+  // const [createCategorie] = useCreateCategorieMutation();
 
   // const [creatAdmin] = useCreatAdminMutation();
 
@@ -24,14 +26,14 @@ const CreateCategoriePage = () => {
     message.loading("Adding Categorie...");
     try {
       const catagoriData = { imageLink: imageUrl, ...data };
-      const res = await createCategorie(catagoriData).unwrap();
-      console.log(res);
-      if (res?.success) {
-        setImageUrl(
-          "https://res.cloudinary.com/dhvuyehnq/image/upload/v1697354272/gcu3mnulmato2odnqqvp.png"
-        );
-        message.success("Categorie added successfully");
-      }
+      // const res = await createCategorie(catagoriData).unwrap();
+      // console.log(res);
+      // if (res?.success) {
+      //   setImageUrl(
+      //     "https://res.cloudinary.com/dhvuyehnq/image/upload/v1697354272/gcu3mnulmato2odnqqvp.png"
+      //   );
+      //   message.success("Categorie added successfully");
+      // }
     } catch (err: any) {
       console.error(err.message);
       message.error(err.message);
@@ -40,7 +42,7 @@ const CreateCategoriePage = () => {
 
   return (
     <div>
-      <SMBreadcrumb
+      {/* <SMBreadcrumb
         items={[
           {
             label: "Manage Categories",
@@ -50,7 +52,7 @@ const CreateCategoriePage = () => {
             label: "Create Categories",
           },
         ]}
-      />
+      /> */}
 
       <h1>Create Admin</h1>
       <Form submitHandler={onSubmit}>
