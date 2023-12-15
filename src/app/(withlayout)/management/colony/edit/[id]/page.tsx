@@ -2,24 +2,25 @@
 
 import Form from "@/components/forms/form";
 import FormInput from "@/components/forms/formInput";
-import SMBreadcrumb from "@/components/ui/Breadcrumb";
 import ActionBar from "@/components/ui/actionBar";
-import ImageUpload from "@/components/ui/image-upload";
-import {
-  useCategorieQuery,
-  useUpdateCategorieMutation,
-} from "@/redux/api/categorieApi";
+
+// import {
+//   useCategorieQuery,
+//   useUpdateCategorieMutation,
+// } from "@/redux/api/categorieApi";
+
 import { getUserInfo } from "@/services/auth.service";
 import { Avatar, Button, Col, Row, message } from "antd";
-import Link from "next/link";
 import { useState } from "react";
 
 const EditCategoriePage = ({ params }: any) => {
-  const [updateCategorie] = useUpdateCategorieMutation();
+  // const [updateCategorie] = useUpdateCategorieMutation();
 
   const id = params.id;
 
-  const { data, isLoading } = useCategorieQuery(id);
+  // const { data, isLoading } = useCategorieQuery(id);
+
+  const { data, isLoading } = { data: {}, isLoading: false };
   const categories = data?.data;
 
   const { role } = getUserInfo() as any;
@@ -29,12 +30,12 @@ const EditCategoriePage = ({ params }: any) => {
     message.loading("Updating...");
     try {
       const catagoriData = { imageLink: imageUrl, ...data };
-      const res = await updateCategorie({ id, body: catagoriData }).unwrap();
+      // const res = await updateCategorie({ id, body: catagoriData }).unwrap();
 
-      if (res?.success) {
-        setImageUrl(res?.data?.imageLink);
-        message.success("Updated Categorie Successfully");
-      }
+      // if (res?.success) {
+      //   setImageUrl(res?.data?.imageLink);
+      //   message.success("Updated Categorie Successfully");
+      // }
     } catch (err: any) {
       console.error(err.message);
       message.error(err.message);
@@ -47,7 +48,7 @@ const EditCategoriePage = ({ params }: any) => {
 
   return (
     <div>
-      <SMBreadcrumb
+      {/* <SMBreadcrumb
         items={[
           {
             label: "Manage Categories",
@@ -57,7 +58,7 @@ const EditCategoriePage = ({ params }: any) => {
             label: "Create Categories",
           },
         ]}
-      />
+      /> */}
       <ActionBar title="Edit Catagory">
         <Form submitHandler={onSubmit} defaultValues={defaultValues}>
           <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
