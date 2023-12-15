@@ -11,7 +11,6 @@ import ActionBar from "@/components/ui/actionBar";
 
 import { getUserInfo } from "@/services/auth.service";
 import { Avatar, Button, Col, Row, message } from "antd";
-import { useState } from "react";
 
 const EditCategoriePage = ({ params }: any) => {
   // const [updateCategorie] = useUpdateCategorieMutation();
@@ -20,18 +19,17 @@ const EditCategoriePage = ({ params }: any) => {
 
   // const { data, isLoading } = useCategorieQuery(id);
 
-  const { data, isLoading } = { data: {}, isLoading: false };
+  const { data, isLoading } = { data: { data: {} }, isLoading: false };
   const categories = data?.data;
 
   const { role } = getUserInfo() as any;
-  const [imageUrl, setImageUrl] = useState(categories?.imageLink);
+  // const [imageUrl, setImageUrl] = useState(categories?.imageLink);
 
   const onSubmit = async (data: any) => {
     message.loading("Updating...");
     try {
-      const catagoriData = { imageLink: imageUrl, ...data };
+      // const catagoriData = { imageLink: imageUrl, ...data };
       // const res = await updateCategorie({ id, body: catagoriData }).unwrap();
-
       // if (res?.success) {
       //   setImageUrl(res?.data?.imageLink);
       //   message.success("Updated Categorie Successfully");
@@ -43,7 +41,7 @@ const EditCategoriePage = ({ params }: any) => {
   };
 
   const defaultValues = {
-    title: categories?.title,
+    title: "",
   };
 
   return (
@@ -84,8 +82,9 @@ const EditCategoriePage = ({ params }: any) => {
                 gap: "10px",
               }}
             >
-              <Avatar shape="square" size={200} src={imageUrl} />
-              <ImageUpload setImageUrl={setImageUrl} imageUrl={imageUrl} />
+              <Avatar shape="square" size={200} />
+              {/* <Avatar shape="square" size={200} src={imageUrl} /> */}
+              {/* <ImageUpload setImageUrl={setImageUrl} imageUrl={imageUrl} /> */}
             </Col>
           </Row>
 

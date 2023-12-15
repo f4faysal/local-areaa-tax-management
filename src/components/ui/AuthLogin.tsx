@@ -7,8 +7,9 @@ import { SubmitHandler } from "react-hook-form";
 
 import { useUserLoginMutation } from "@/redux/api/authApi";
 import { storeUserInfo } from "@/services/auth.service";
-import Form from "../Forms/form";
-import FormInput from "../Forms/formInput";
+
+import FormInput from "@/components/forms/formInput";
+import Form from "../forms/form";
 
 type FormValues = {
   contact_no: string;

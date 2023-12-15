@@ -1,10 +1,12 @@
 "use client";
 
 import ActionBar from "@/components/ui/actionBar";
+
 // import {
 //   useCategoriesQuery,
 //   useDeleteCategorieMutation,
 // } from "@/redux/api/categorieApi";
+
 import { useDebounced } from "@/redux/hooks";
 import { getUserInfo } from "@/services/auth.service";
 import {
@@ -47,7 +49,13 @@ const CategoriesPage = () => {
     console.log(debouncedTerm);
   }
 
-  const { data, isLoading } = { data: {}, isLoading: false };
+  const { data, isLoading } = {
+    data: {
+      data: {},
+    },
+    isLoading: false,
+  };
+
   // const { data, isLoading } = useCategoriesQuery({});
 
   const catagorisList = data?.data;
@@ -56,6 +64,7 @@ const CategoriesPage = () => {
   const deleteHandler = async (id: { id: string }) => {
     // const res = await deleteCategorie(id).unwrap();
     // console.log(res);
+
     message.loading("Deleting Categorie...");
     try {
       message.success("Categorie deleted successfully");
