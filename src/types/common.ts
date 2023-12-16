@@ -37,3 +37,12 @@ export interface IAdmin {
   updatedAt: string;
   __v: number;
 }
+
+export interface IColony {
+  id: string;
+  colony_name: string;
+  ward_no: string;
+  colony_no: string;
+  updatedAt: string;
+  __v: number;
+}

@@ -2,6 +2,7 @@
 
 import Form from "@/components/forms/form";
 import FormInput from "@/components/forms/formInput";
+import ActionBar from "@/components/ui/actionBar";
 
 import { getUserInfo } from "@/services/auth.service";
 import { Button, Col, Row, message } from "antd";
@@ -49,26 +50,26 @@ const CreateCategoriePage = () => {
           },
         ]}
       /> */}
-
-      <h1>Create Colony</h1>
-
+      <ActionBar title="Financial Year">
+        <></>
+      </ActionBar>
       <Form submitHandler={onSubmit}>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
           <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput
-              name="colony_name"
-              label="Colony Name"
+              name="start_year"
+              label="Start Year"
               type="text"
-              placeholder="colony name"
+              placeholder="Start Year"
               size="large"
             />
           </Col>
           <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput
-              name="ward_no"
-              label="Ward No"
+              name="end_year"
+              label="End year"
               type="text"
-              placeholder="ward number"
+              placeholder="End year"
               size="large"
             />
           </Col>
