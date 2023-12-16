@@ -3,12 +3,12 @@
 import { Button, Col, Row, Typography, message } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { useRouter } from "next/navigation";
-import { SubmitHandler } from "react-hook-form";
 
 import { useUserLoginMutation } from "@/redux/api/authApi";
 import { storeUserInfo } from "@/services/auth.service";
 
 import FormInput from "@/components/forms/formInput";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Form from "../forms/form";
 
@@ -18,8 +18,8 @@ type FormValues = {
 };
 
 const formSchema = z.object({
-  email: z.string().email({ message: "Invalid email address" }),
-  hashedPassword: z
+  contact_no: z.string().min(10, { message: "Invalid Phone Number" }),
+  password: z
     .string()
     .min(6, { message: "Password must be at least 6 characters" }),
 });
@@ -33,7 +33,7 @@ const AuthLogin = () => {
 
   const [UserLogin, { isLoading, isError }] = useUserLoginMutation();
 
-  const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       const res: any = await UserLogin(data);
       if (res?.data?.accessToken) {
@@ -95,7 +95,7 @@ const AuthLogin = () => {
             </Title>
           </div>
 
-          <Form submitHandler={onSubmit} formSchema={formSchema}>
+          <Form submitHandler={onSubmit} resolver={zodResolver(formSchema)}>
             <>
               <div>
                 <FormInput
@@ -103,7 +103,7 @@ const AuthLogin = () => {
                   name="contact_no"
                   type="tel"
                   size="large"
-                  placeholder="Your Registered Number"
+                  placeholder="Your Phone Number"
                   label="Phone Number"
                 />
               </div>
