@@ -48,7 +48,8 @@ const FinancialYearPage = () => {
 
   const { data, isLoading } = useFinancialYearsQuery({});
 
-  const financialYears = data?.colonies;
+  const financialYears = data?.financialYears;
+  console.log(financialYears, "financialYears");
 
   // const meta = data?.meta;
 
@@ -67,12 +68,12 @@ const FinancialYearPage = () => {
 
   const columns = [
     {
-      title: "Colony Name",
-      dataIndex: "colony_name",
+      title: "Financial Year Start",
+      dataIndex: "start_year",
     },
     {
-      title: "Colony Name",
-      dataIndex: "ward_no",
+      title: "Financial Year End",
+      dataIndex: "end_year",
     },
     {
       title: "Created At",

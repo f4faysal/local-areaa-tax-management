@@ -17,7 +17,7 @@ export const financialYearsAPI = baseApi.injectEndpoints({
       },
       transformResponse: (response: IFinancialYear[], meta: IMeta) => {
         return {
-          colonies: response,
+          financialYears: response,
           meta,
         };
       },

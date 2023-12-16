@@ -26,9 +26,11 @@ const CreateFinancialYearPage = () => {
     message.loading("Adding Colony...");
     try {
       const res = await AddFinancialYear(data).unwrap();
-
+      console.log(res);
       if (res?.id) {
         message.success("Colony added successfully");
+      } else {
+        message.error("Something went wrong");
       }
     } catch (err: any) {
       console.error(err.message);
