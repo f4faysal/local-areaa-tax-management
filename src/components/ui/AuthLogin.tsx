@@ -17,7 +17,7 @@ type FormValues = {
   password: string;
 };
 
-const formSchema = z.object({
+const loginSchema = z.object({
   contact_no: z.string().min(10, { message: "Invalid Phone Number" }),
   password: z
     .string()
@@ -33,7 +33,7 @@ const AuthLogin = () => {
 
   const [UserLogin, { isLoading, isError }] = useUserLoginMutation();
 
-  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+  const onSubmit = async (data: z.infer<typeof loginSchema>) => {
     try {
       const res: any = await UserLogin(data);
       if (res?.data?.accessToken) {
@@ -95,7 +95,7 @@ const AuthLogin = () => {
             </Title>
           </div>
 
-          <Form submitHandler={onSubmit} resolver={zodResolver(formSchema)}>
+          <Form submitHandler={onSubmit} resolver={zodResolver(loginSchema)}>
             <>
               <div>
                 <FormInput
