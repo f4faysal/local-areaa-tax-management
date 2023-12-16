@@ -11,15 +11,15 @@ import Title from "antd/es/typography/Title";
 import { z } from "zod";
 
 const colonySchema = z.object({
-  colony_name: z
+  start_year: z
     .string()
     .min(3, { message: "Name must be at least 3 characters" }),
-  ward_no: z
+  end_year: z
     .string()
     .min(1, { message: "Ward No must be at least 1 characters" }),
 });
 
-const CreateColonyPage = () => {
+const CreateFinancialYearPage = () => {
   const [AddColony, { isLoading }] = useAddColonyMutation();
 
   const onSubmit = async (data: z.infer<typeof colonySchema>) => {
@@ -44,34 +44,34 @@ const CreateColonyPage = () => {
             label: `Management`,
           },
           {
-            label: "Colony",
-            link: `/management/colony`,
+            label: "Financial Year",
+            link: `/management/financial-year`,
           },
           {
-            label: "Create Colony",
+            label: "Create Financial Year",
           },
         ]}
       />
 
-      <Title level={2}>Create Colony</Title>
+      <Title level={2}>Create Financial Year</Title>
 
       <Form submitHandler={onSubmit} resolver={zodResolver(colonySchema)}>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
           <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput
-              name="colony_name"
-              label="Colony Name"
+              name="start_year"
+              label="Start Year"
               type="text"
-              placeholder="colony name"
+              placeholder="start year"
               size="large"
             />
           </Col>
           <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput
-              name="ward_no"
-              label="Ward No"
+              name="end_year"
+              label="End Year"
               type="text"
-              placeholder="ward number"
+              placeholder="end year"
               size="large"
             />
           </Col>
@@ -85,4 +85,4 @@ const CreateColonyPage = () => {
   );
 };
 
-export default CreateColonyPage;
+export default CreateFinancialYearPage;

@@ -18,7 +18,7 @@ import dayjs from "dayjs";
 import Link from "next/link";
 import { useState } from "react";
 
-const CategoriesPage = () => {
+const FinancialYearPage = () => {
   const { role } = getUserInfo() as any;
 
   const [DeleteColony] = useDeleteColonyMutation();
@@ -141,13 +141,13 @@ const CategoriesPage = () => {
             label: `Management`,
           },
           {
-            label: "Colony",
-            link: `/management/colony`,
+            label: "Financial Year",
+            link: `/management/financial-year`,
           },
         ]}
       />
 
-      <ActionBar title="Manage Colony">
+      <ActionBar title="Manage Financial Year">
         <Input
           type="text"
           size="large"
@@ -161,7 +161,7 @@ const CategoriesPage = () => {
           }}
         />
         <div>
-          <Link href={`/management/colony/create`}>
+          <Link href={`/management/financial-year/create`}>
             <Button type="primary">Create</Button>
           </Link>
           {(!!sortBy || !!sortOrder || searchTerm) && (
@@ -192,4 +192,4 @@ const CategoriesPage = () => {
   );
 };
 
-export default CategoriesPage;
+export default FinancialYearPage;

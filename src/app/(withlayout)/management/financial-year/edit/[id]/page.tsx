@@ -7,7 +7,7 @@ import ActionBar from "@/components/ui/actionBar";
 import { useColonyQuery, useUpdateColonyMutation } from "@/redux/api/colonyApi";
 import { Button, Col, Row, message } from "antd";
 
-const EditColonyPage = ({ params }: any) => {
+const EditFinancialYearPage = ({ params }: any) => {
   const [UpdateColony, { isLoading }] = useUpdateColonyMutation();
 
   const { data } = useColonyQuery(params.id);
@@ -81,4 +81,4 @@ const EditColonyPage = ({ params }: any) => {
   );
 };
 
-export default EditColonyPage;
+export default EditFinancialYearPage;
