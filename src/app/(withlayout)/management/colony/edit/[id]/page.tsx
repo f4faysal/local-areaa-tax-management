@@ -3,33 +3,19 @@
 import Form from "@/components/forms/form";
 import FormInput from "@/components/forms/formInput";
 import ActionBar from "@/components/ui/actionBar";
-
-// import {
-//   useCategorieQuery,
-//   useUpdateCategorieMutation,
-// } from "@/redux/api/categorieApi";
-
-import { getUserInfo } from "@/services/auth.service";
+import { useColonyQuery, useUpdateColonyMutation } from "@/redux/api/colonyApi";
 import { Button, Col, Row, message } from "antd";
 
-const EditCategoriePage = ({ params }: any) => {
-  // const [updateCategorie] = useUpdateCategorieMutation();
+const EditColonyPage = ({ params }: any) => {
+  const [UpdateColony, { isLoading }] = useUpdateColonyMutation();
 
-  const id = params.id;
-
-  // const { data, isLoading } = useCategorieQuery(id);
-
-  const { data, isLoading } = { data: { data: {} }, isLoading: false };
-  const categories = data?.data;
-
-  const { role } = getUserInfo() as any;
-  // const [imageUrl, setImageUrl] = useState(categories?.imageLink);
+  const { data } = useColonyQuery(params.id);
 
   const onSubmit = async (data: any) => {
     message.loading("Updating...");
     try {
-      // const catagoriData = { imageLink: imageUrl, ...data };
-      // const res = await updateCategorie({ id, body: catagoriData }).unwrap();
+      const res = await UpdateColony({ id: params.id, body: data }).unwrap();
+      console.log(res);
       // if (res?.success) {
       //   setImageUrl(res?.data?.imageLink);
       //   message.success("Updated Categorie Successfully");
@@ -41,7 +27,8 @@ const EditCategoriePage = ({ params }: any) => {
   };
 
   const defaultValues = {
-    title: "",
+    colony_name: data?.colony_name,
+    ward_no: data?.ward_no,
   };
 
   return (
@@ -80,7 +67,7 @@ const EditCategoriePage = ({ params }: any) => {
             </Col>
           </Row>
 
-          <Button type="primary" htmlType="submit">
+          <Button loading={isLoading} type="primary" htmlType="submit">
             Update
           </Button>
         </Form>
@@ -89,4 +76,4 @@ const EditCategoriePage = ({ params }: any) => {
   );
 };
 
-export default EditCategoriePage;
+export default EditColonyPage;
