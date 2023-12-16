@@ -65,7 +65,7 @@ const CategoriesPage = () => {
       message.error(err.message);
     }
   };
-
+  // Compare this snippet from src/app/%28withlayout%29/management/colony/edit/page.tsx:
   const columns = [
     {
       title: "Colony Name",
@@ -95,7 +95,7 @@ const CategoriesPage = () => {
               width: "150px",
             }}
           >
-            <Link href={`/${role}/categories/edit/${data.id}`}>
+            <Link href={`/management/colonyedit/${data.id}`}>
               <Button onClick={() => console.log(data)} type="primary">
                 <EditOutlined />
               </Button>
