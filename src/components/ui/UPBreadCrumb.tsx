@@ -7,7 +7,7 @@ const UPBreadCrumb = ({
 }: {
   items: {
     label: string;
-    link: string;
+    link?: string;
   }[];
 }) => {
   const breadCrumbItems = [

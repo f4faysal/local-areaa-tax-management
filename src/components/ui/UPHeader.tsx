@@ -2,7 +2,6 @@ import { Button, theme } from "antd";
 import { Header } from "antd/es/layout/layout";
 
 import { PicRightOutlined } from "@ant-design/icons";
-import UPBreadCrumb from "./UPBreadCrumb";
 
 interface UPHeaderProps {
   setToggled: (value: boolean) => void;
@@ -18,7 +17,6 @@ const UPHeader: React.FC<UPHeaderProps> = ({
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-  const base = "admin";
   return (
     <Header
       style={{
@@ -28,7 +26,7 @@ const UPHeader: React.FC<UPHeaderProps> = ({
         justifyContent: "space-between",
         alignItems: "center",
         position: "sticky",
-        top: 0,
+        top: "16px",
         zIndex: 100,
         borderRadius: "0.5rem",
         marginBottom: "1rem",
@@ -43,7 +41,7 @@ const UPHeader: React.FC<UPHeaderProps> = ({
             size={"large"}
           />
         </div>
-        <div
+        {/* <div
           className="hideOnMobile"
           style={{
             background: "#ebeef3",
@@ -55,19 +53,15 @@ const UPHeader: React.FC<UPHeaderProps> = ({
             items={[
               {
                 label: `Admin`,
-                link: `/${base}`,
+                link: `/Admin`,
               },
               {
                 label: "Create Home",
-                link: `/${base}/create-home`,
-              },
-              {
-                label: "Create Room",
-                link: `/${base}/create-room`,
+                link: `/Admin/create-home`,
               },
             ]}
           />
-        </div>
+        </div> */}
       </div>
 
       <div className="hideOnDesktop">

@@ -1,5 +1,6 @@
 "use client";
 import UPTable from "@/components/ui/Table";
+import UPBreadCrumb from "@/components/ui/UPBreadCrumb";
 import ActionBar from "@/components/ui/actionBar";
 import {
   useColoniesQuery,
@@ -134,15 +135,17 @@ const CategoriesPage = () => {
 
   return (
     <div>
-      {/* <SMBreadcrumb
+      <UPBreadCrumb
         items={[
           {
-            label: "Manage Catagory",
-
-            path: "/admin/categories",
+            label: `Management`,
+          },
+          {
+            label: "Colony",
+            link: `/management/colony`,
           },
         ]}
-      /> */}
+      />
 
       <ActionBar title="Manage Colony">
         <Input

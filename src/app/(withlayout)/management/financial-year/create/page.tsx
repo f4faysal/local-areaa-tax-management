@@ -2,35 +2,34 @@
 
 import Form from "@/components/forms/form";
 import FormInput from "@/components/forms/formInput";
-import ActionBar from "@/components/ui/actionBar";
+import UPBreadCrumb from "@/components/ui/UPBreadCrumb";
+import { useAddColonyMutation } from "@/redux/api/colonyApi";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-import { getUserInfo } from "@/services/auth.service";
 import { Button, Col, Row, message } from "antd";
+import Title from "antd/es/typography/Title";
+import { z } from "zod";
 
-const CreateCategoriePage = () => {
-  const { role } = getUserInfo() as any;
+const colonySchema = z.object({
+  colony_name: z
+    .string()
+    .min(3, { message: "Name must be at least 3 characters" }),
+  ward_no: z
+    .string()
+    .min(1, { message: "Ward No must be at least 1 characters" }),
+});
 
-  // const [imageUrl, setImageUrl] = useState(
-  //   "https://res.cloudinary.com/dhvuyehnq/image/upload/v1697354272/gcu3mnulmato2odnqqvp.png"
-  // );
+const CreateColonyPage = () => {
+  const [AddColony, { isLoading }] = useAddColonyMutation();
 
-  //   const [addDepartment] = useAddDepartmentMutation();
-  // const [createCategorie] = useCreateCategorieMutation();
-
-  // const [creatAdmin] = useCreatAdminMutation();
-
-  const onSubmit = async (data: any) => {
-    message.loading("Adding Categorie...");
+  const onSubmit = async (data: z.infer<typeof colonySchema>) => {
+    message.loading("Adding Colony...");
     try {
-      // const catagoriData = { imageLink: imageUrl, ...data };
-      // const res = await createCategorie(catagoriData).unwrap();
-      // console.log(res);
-      // if (res?.success) {
-      //   setImageUrl(
-      //     "https://res.cloudinary.com/dhvuyehnq/image/upload/v1697354272/gcu3mnulmato2odnqqvp.png"
-      //   );
-      //   message.success("Categorie added successfully");
-      // }
+      const res = await AddColony(data).unwrap();
+
+      if (res?.id) {
+        message.success("Colony added successfully");
+      }
     } catch (err: any) {
       console.error(err.message);
       message.error(err.message);
@@ -39,43 +38,46 @@ const CreateCategoriePage = () => {
 
   return (
     <div>
-      {/* <SMBreadcrumb
+      <UPBreadCrumb
         items={[
           {
-            label: "Manage Categories",
-            path: `/${role}/categories`,
+            label: `Management`,
           },
           {
-            label: "Create Categories",
+            label: "Colony",
+            link: `/management/colony`,
+          },
+          {
+            label: "Create Colony",
           },
         ]}
-      /> */}
-      <ActionBar title="Financial Year">
-        <></>
-      </ActionBar>
-      <Form submitHandler={onSubmit}>
+      />
+
+      <Title level={2}>Create Colony</Title>
+
+      <Form submitHandler={onSubmit} resolver={zodResolver(colonySchema)}>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
           <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput
-              name="start_year"
-              label="Start Year"
+              name="colony_name"
+              label="Colony Name"
               type="text"
-              placeholder="Start Year"
+              placeholder="colony name"
               size="large"
             />
           </Col>
           <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput
-              name="end_year"
-              label="End year"
+              name="ward_no"
+              label="Ward No"
               type="text"
-              placeholder="End year"
+              placeholder="ward number"
               size="large"
             />
           </Col>
         </Row>
 
-        <Button type="primary" htmlType="submit">
+        <Button loading={isLoading} type="primary" htmlType="submit">
           Create
         </Button>
       </Form>
@@ -83,4 +85,4 @@ const CreateCategoriePage = () => {
   );
 };
 
-export default CreateCategoriePage;
+export default CreateColonyPage;

@@ -1,12 +1,11 @@
 "use client";
-
+import UPTable from "@/components/ui/Table";
+import UPBreadCrumb from "@/components/ui/UPBreadCrumb";
 import ActionBar from "@/components/ui/actionBar";
-
-// import {
-//   useCategoriesQuery,
-//   useDeleteCategorieMutation,
-// } from "@/redux/api/categorieApi";
-
+import {
+  useColoniesQuery,
+  useDeleteColonyMutation,
+} from "@/redux/api/colonyApi";
 import { useDebounced } from "@/redux/hooks";
 import { getUserInfo } from "@/services/auth.service";
 import {
@@ -14,7 +13,7 @@ import {
   EditOutlined,
   ReloadOutlined,
 } from "@ant-design/icons";
-import { Avatar, Button, Input, message } from "antd";
+import { Button, Input, message } from "antd";
 import dayjs from "dayjs";
 import Link from "next/link";
 import { useState } from "react";
@@ -22,18 +21,18 @@ import { useState } from "react";
 const CategoriesPage = () => {
   const { role } = getUserInfo() as any;
 
-  // const [deleteCategorie] = useDeleteCategorieMutation();
+  const [DeleteColony] = useDeleteColonyMutation();
 
   const query: Record<string, any> = {};
 
-  const [sige, setSige] = useState<number>(10);
+  const [size, setSize] = useState<number>(10);
   const [page, setPage] = useState<number>(1);
   const [sortBy, setSortBy] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   query["page"] = page;
-  query["limit"] = sige;
+  query["limit"] = size;
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
   query["search"] = searchTerm;
@@ -49,25 +48,20 @@ const CategoriesPage = () => {
     console.log(debouncedTerm);
   }
 
-  const { data, isLoading } = {
-    data: {
-      data: {},
-    },
-    isLoading: false,
-  };
+  const { data, isLoading } = useColoniesQuery({});
 
-  // const { data, isLoading } = useCategoriesQuery({});
+  const coloniesList = data?.colonies;
 
-  const catagorisList = data?.data;
   // const meta = data?.meta;
 
   const deleteHandler = async (id: { id: string }) => {
-    // const res = await deleteCategorie(id).unwrap();
-    // console.log(res);
-
-    message.loading("Deleting Categorie...");
+    message.loading("Deleting Colony...");
     try {
-      message.success("Categorie deleted successfully");
+      const res: any = await DeleteColony(id);
+
+      if (res?.data) {
+        message.success("Colony deleted successfully");
+      }
     } catch (err: any) {
       message.error(err.message);
     }
@@ -75,15 +69,12 @@ const CategoriesPage = () => {
 
   const columns = [
     {
-      title: "Picture",
-      render: function (data: any) {
-        // return <img src={data?.profilePicture} alt="profile" width="50px" height="50px" />
-        return <Avatar shape="square" size={50} src={data?.imageLink} />;
-      },
+      title: "Colony Name",
+      dataIndex: "colony_name",
     },
     {
-      title: "title",
-      dataIndex: "title",
+      title: "Colony Name",
+      dataIndex: "ward_no",
     },
     {
       title: "Created At",
@@ -105,7 +96,7 @@ const CategoriesPage = () => {
               width: "150px",
             }}
           >
-            <Link href={`/${role}/categories/edit/${data.id}`}>
+            <Link href={`/management/colony/edit/${data.id}`}>
               <Button onClick={() => console.log(data)} type="primary">
                 <EditOutlined />
               </Button>
@@ -124,8 +115,9 @@ const CategoriesPage = () => {
 
   const onPaginationChange = (page: number, pageSize: number) => {
     setPage(page);
-    setSige(pageSize);
+    setSize(pageSize);
   };
+
   const onTableChange = (pagination: any, filters: any, sorter: any) => {
     // console.log(pagination, "pagination");
     // console.log(filters, "filters");
@@ -140,19 +132,22 @@ const CategoriesPage = () => {
     setSortOrder("");
     setSearchTerm("");
   };
+
   return (
     <div>
-      {/* <SMBreadcrumb
+      <UPBreadCrumb
         items={[
           {
-            label: "Manage Catagory",
-
-            path: "/admin/categories",
+            label: `Management`,
+          },
+          {
+            label: "Colony",
+            link: `/management/colony`,
           },
         ]}
-      /> */}
+      />
 
-      <ActionBar title="Financial Year">
+      <ActionBar title="Manage Colony">
         <Input
           type="text"
           size="large"
@@ -166,7 +161,7 @@ const CategoriesPage = () => {
           }}
         />
         <div>
-          <Link href={`/management/financial-year/create`}>
+          <Link href={`/management/colony/create`}>
             <Button type="primary">Create</Button>
           </Link>
           {(!!sortBy || !!sortOrder || searchTerm) && (
@@ -182,17 +177,17 @@ const CategoriesPage = () => {
         </div>
       </ActionBar>
 
-      {/* <SBTable
+      <UPTable
         loading={isLoading}
         columns={columns}
-        dataSource={catagorisList}
+        dataSource={coloniesList}
         // pageSize={sige}
         // totalPages={meta?.total}
-        // showSizeChanger={true}
+        showSizeChanger={true}
         // onPaginationChange={onPaginationChange}
         // onTableChange={onTableChange}
-        // showPagination={true}
-      /> */}
+        showPagination={true}
+      />
     </div>
   );
 };

@@ -2,10 +2,12 @@
 
 import Form from "@/components/forms/form";
 import FormInput from "@/components/forms/formInput";
+import UPBreadCrumb from "@/components/ui/UPBreadCrumb";
 import { useAddColonyMutation } from "@/redux/api/colonyApi";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button, Col, Row, message } from "antd";
+import Title from "antd/es/typography/Title";
 import { z } from "zod";
 
 const colonySchema = z.object({
@@ -36,19 +38,22 @@ const CreateColonyPage = () => {
 
   return (
     <div>
-      {/* <SMBreadcrumb
+      <UPBreadCrumb
         items={[
           {
-            label: "Manage Categories",
-            path: `/${role}/categories`,
+            label: `Management`,
           },
           {
-            label: "Create Categories",
+            label: "Colony",
+            link: `/management/colony`,
+          },
+          {
+            label: "Create Colony",
           },
         ]}
-      /> */}
+      />
 
-      <h1>Create Colony</h1>
+      <Title level={2}>Create Colony</Title>
 
       <Form submitHandler={onSubmit} resolver={zodResolver(colonySchema)}>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>

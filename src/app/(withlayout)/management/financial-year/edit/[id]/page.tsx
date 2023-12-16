@@ -2,34 +2,21 @@
 
 import Form from "@/components/forms/form";
 import FormInput from "@/components/forms/formInput";
+import UPBreadCrumb from "@/components/ui/UPBreadCrumb";
 import ActionBar from "@/components/ui/actionBar";
+import { useColonyQuery, useUpdateColonyMutation } from "@/redux/api/colonyApi";
+import { Button, Col, Row, message } from "antd";
 
-// import {
-//   useCategorieQuery,
-//   useUpdateCategorieMutation,
-// } from "@/redux/api/categorieApi";
+const EditColonyPage = ({ params }: any) => {
+  const [UpdateColony, { isLoading }] = useUpdateColonyMutation();
 
-import { getUserInfo } from "@/services/auth.service";
-import { Avatar, Button, Col, Row, message } from "antd";
-
-const EditCategoriePage = ({ params }: any) => {
-  // const [updateCategorie] = useUpdateCategorieMutation();
-
-  const id = params.id;
-
-  // const { data, isLoading } = useCategorieQuery(id);
-
-  const { data, isLoading } = { data: { data: {} }, isLoading: false };
-  const categories = data?.data;
-
-  const { role } = getUserInfo() as any;
-  // const [imageUrl, setImageUrl] = useState(categories?.imageLink);
+  const { data } = useColonyQuery(params.id);
 
   const onSubmit = async (data: any) => {
     message.loading("Updating...");
     try {
-      // const catagoriData = { imageLink: imageUrl, ...data };
-      // const res = await updateCategorie({ id, body: catagoriData }).unwrap();
+      const res = await UpdateColony({ id: params.id, body: data }).unwrap();
+      console.log(res);
       // if (res?.success) {
       //   setImageUrl(res?.data?.imageLink);
       //   message.success("Updated Categorie Successfully");
@@ -41,54 +28,51 @@ const EditCategoriePage = ({ params }: any) => {
   };
 
   const defaultValues = {
-    title: "",
+    colony_name: data?.colony_name,
+    ward_no: data?.ward_no,
   };
 
   return (
     <div>
-      {/* <SMBreadcrumb
+      <UPBreadCrumb
         items={[
           {
-            label: "Manage Categories",
-            path: `/${role}/categories`,
+            label: `Management`,
           },
           {
-            label: "Create Categories",
+            label: "Colony",
+            link: `/management/colony`,
+          },
+          {
+            label: "Edit Colony",
           },
         ]}
-      /> */}
-      <ActionBar title="Edit Catagory">
+      />
+
+      <ActionBar title="Edit Colony">
         <Form submitHandler={onSubmit} defaultValues={defaultValues}>
           <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-            <Col span={24} style={{ margin: "10px 0" }}>
+            <Col span={8} style={{ margin: "10px 0" }}>
               <FormInput
-                name="title"
-                label="Category Title"
+                name="colony_name"
+                label="Colony Name"
                 type="text"
-                placeholder="Category Title"
+                placeholder="colony name"
+                size="large"
+              />
+            </Col>
+            <Col span={8} style={{ margin: "10px 0" }}>
+              <FormInput
+                name="ward_no"
+                label="Ward No"
+                type="text"
+                placeholder="ward number"
                 size="large"
               />
             </Col>
           </Row>
-          <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-            <Col
-              span={8}
-              style={{
-                margin: "10px 0",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "start",
-                gap: "10px",
-              }}
-            >
-              <Avatar shape="square" size={200} />
-              {/* <Avatar shape="square" size={200} src={imageUrl} /> */}
-              {/* <ImageUpload setImageUrl={setImageUrl} imageUrl={imageUrl} /> */}
-            </Col>
-          </Row>
 
-          <Button type="primary" htmlType="submit">
+          <Button loading={isLoading} type="primary" htmlType="submit">
             Update
           </Button>
         </Form>
@@ -97,4 +81,4 @@ const EditCategoriePage = ({ params }: any) => {
   );
 };
 
-export default EditCategoriePage;
+export default EditColonyPage;

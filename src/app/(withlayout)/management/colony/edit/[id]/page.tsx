@@ -2,6 +2,7 @@
 
 import Form from "@/components/forms/form";
 import FormInput from "@/components/forms/formInput";
+import UPBreadCrumb from "@/components/ui/UPBreadCrumb";
 import ActionBar from "@/components/ui/actionBar";
 import { useColonyQuery, useUpdateColonyMutation } from "@/redux/api/colonyApi";
 import { Button, Col, Row, message } from "antd";
@@ -33,17 +34,21 @@ const EditColonyPage = ({ params }: any) => {
 
   return (
     <div>
-      {/* <SMBreadcrumb
+      <UPBreadCrumb
         items={[
           {
-            label: "Manage Categories",
-            path: `/${role}/categories`,
+            label: `Management`,
           },
           {
-            label: "Create Categories",
+            label: "Colony",
+            link: `/management/colony`,
+          },
+          {
+            label: "Edit Colony",
           },
         ]}
-      /> */}
+      />
+
       <ActionBar title="Edit Colony">
         <Form submitHandler={onSubmit} defaultValues={defaultValues}>
           <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
