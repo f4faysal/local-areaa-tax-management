@@ -46,3 +46,12 @@ export interface IColony {
   updatedAt: string;
   __v: number;
 }
+
+export interface IFinancialYear {
+  id: string;
+  start_date: string;
+  end_date: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
