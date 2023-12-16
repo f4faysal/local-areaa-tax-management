@@ -2,10 +2,8 @@
 import UPTable from "@/components/ui/Table";
 import UPBreadCrumb from "@/components/ui/UPBreadCrumb";
 import ActionBar from "@/components/ui/actionBar";
-import {
-  useColoniesQuery,
-  useDeleteColonyMutation,
-} from "@/redux/api/colonyApi";
+import { useDeleteColonyMutation } from "@/redux/api/colonyApi";
+import { useFinancialYearsQuery } from "@/redux/api/financialYearsAPI";
 import { useDebounced } from "@/redux/hooks";
 import { getUserInfo } from "@/services/auth.service";
 import {
@@ -48,9 +46,9 @@ const FinancialYearPage = () => {
     console.log(debouncedTerm);
   }
 
-  const { data, isLoading } = useColoniesQuery({});
+  const { data, isLoading } = useFinancialYearsQuery({});
 
-  const coloniesList = data?.colonies;
+  const financialYears = data?.colonies;
 
   // const meta = data?.meta;
 
@@ -180,7 +178,7 @@ const FinancialYearPage = () => {
       <UPTable
         loading={isLoading}
         columns={columns}
-        dataSource={coloniesList}
+        dataSource={financialYears}
         // pageSize={sige}
         // totalPages={meta?.total}
         showSizeChanger={true}

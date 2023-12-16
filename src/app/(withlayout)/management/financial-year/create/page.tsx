@@ -3,7 +3,7 @@
 import Form from "@/components/forms/form";
 import FormInput from "@/components/forms/formInput";
 import UPBreadCrumb from "@/components/ui/UPBreadCrumb";
-import { useAddColonyMutation } from "@/redux/api/colonyApi";
+import { useAddFinancialYearMutation } from "@/redux/api/financialYearsAPI";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button, Col, Row, message } from "antd";
@@ -20,12 +20,12 @@ const colonySchema = z.object({
 });
 
 const CreateFinancialYearPage = () => {
-  const [AddColony, { isLoading }] = useAddColonyMutation();
+  const [AddFinancialYear, { isLoading }] = useAddFinancialYearMutation();
 
   const onSubmit = async (data: z.infer<typeof colonySchema>) => {
     message.loading("Adding Colony...");
     try {
-      const res = await AddColony(data).unwrap();
+      const res = await AddFinancialYear(data).unwrap();
 
       if (res?.id) {
         message.success("Colony added successfully");

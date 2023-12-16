@@ -7,7 +7,7 @@ const FinancialYear_URL = "/financial-years";
 export const financialYearsAPI = baseApi.injectEndpoints({
   endpoints: (build) => ({
     //get all financialYears
-    colonies: build.query({
+    financialYears: build.query({
       query: (arg: Record<string, any>) => {
         return {
           url: FinancialYear_URL,
@@ -61,7 +61,7 @@ export const financialYearsAPI = baseApi.injectEndpoints({
 });
 
 export const {
-  useColoniesQuery,
+  useFinancialYearsQuery,
   useFinancialYearQuery,
   useAddFinancialYearMutation,
   useUpdateFinancialYearMutation,
