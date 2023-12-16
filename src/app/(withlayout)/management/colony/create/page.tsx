@@ -2,34 +2,21 @@
 
 import Form from "@/components/forms/form";
 import FormInput from "@/components/forms/formInput";
+import { useAddColonyMutation } from "@/redux/api/colonyApi";
 
-import { getUserInfo } from "@/services/auth.service";
 import { Button, Col, Row, message } from "antd";
 
-const CreateCategoriePage = () => {
-  const { role } = getUserInfo() as any;
+const CreateColonyPage = () => {
+  const [AddColony, { isLoading }] = useAddColonyMutation();
 
-  // const [imageUrl, setImageUrl] = useState(
-  //   "https://res.cloudinary.com/dhvuyehnq/image/upload/v1697354272/gcu3mnulmato2odnqqvp.png"
-  // );
-
-  //   const [addDepartment] = useAddDepartmentMutation();
-  // const [createCategorie] = useCreateCategorieMutation();
-
-  // const [creatAdmin] = useCreatAdminMutation();
-
-  const onSubmit = async (data: any) => {
-    message.loading("Adding Categorie...");
+  const onSubmit = async (data) => {
+    message.loading("Adding Colony...");
     try {
-      // const catagoriData = { imageLink: imageUrl, ...data };
-      // const res = await createCategorie(catagoriData).unwrap();
-      // console.log(res);
-      // if (res?.success) {
-      //   setImageUrl(
-      //     "https://res.cloudinary.com/dhvuyehnq/image/upload/v1697354272/gcu3mnulmato2odnqqvp.png"
-      //   );
-      //   message.success("Categorie added successfully");
-      // }
+      const res = await AddColony(data).unwrap();
+
+      if (res?.id) {
+        message.success("Colony added successfully");
+      }
     } catch (err: any) {
       console.error(err.message);
       message.error(err.message);
@@ -74,7 +61,7 @@ const CreateCategoriePage = () => {
           </Col>
         </Row>
 
-        <Button type="primary" htmlType="submit">
+        <Button loading={isLoading} type="primary" htmlType="submit">
           Create
         </Button>
       </Form>
@@ -82,4 +69,4 @@ const CreateCategoriePage = () => {
   );
 };
 
-export default CreateCategoriePage;
+export default CreateColonyPage;

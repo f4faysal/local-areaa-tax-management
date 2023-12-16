@@ -152,7 +152,7 @@ const CategoriesPage = () => {
         ]}
       /> */}
 
-      <ActionBar title="Manage Catagory">
+      <ActionBar title="Manage Colony">
         <Input
           type="text"
           size="large"

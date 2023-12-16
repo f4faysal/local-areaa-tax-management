@@ -9,12 +9,20 @@ import { useUserLoginMutation } from "@/redux/api/authApi";
 import { storeUserInfo } from "@/services/auth.service";
 
 import FormInput from "@/components/forms/formInput";
+import { z } from "zod";
 import Form from "../forms/form";
 
 type FormValues = {
   contact_no: string;
   password: string;
 };
+
+const formSchema = z.object({
+  email: z.string().email({ message: "Invalid email address" }),
+  hashedPassword: z
+    .string()
+    .min(6, { message: "Password must be at least 6 characters" }),
+});
 
 const AuthLogin = () => {
   const router = useRouter();
@@ -87,7 +95,7 @@ const AuthLogin = () => {
             </Title>
           </div>
 
-          <Form submitHandler={onSubmit}>
+          <Form submitHandler={onSubmit} formSchema={formSchema}>
             <>
               <div>
                 <FormInput

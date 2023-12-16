@@ -34,7 +34,7 @@ export const colonyApi = baseApi.injectEndpoints({
     // create a new colony
     addColony: build.mutation({
       query: (data) => ({
-        url: COLONY_URL,
+        url: `${COLONY_URL}/create-colony`,
         method: "POST",
         data,
       }),
