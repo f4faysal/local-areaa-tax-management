@@ -10,7 +10,7 @@ import ActionBar from "@/components/ui/actionBar";
 // } from "@/redux/api/categorieApi";
 
 import { getUserInfo } from "@/services/auth.service";
-import { Avatar, Button, Col, Row, message } from "antd";
+import { Button, Col, Row, message } from "antd";
 
 const EditCategoriePage = ({ params }: any) => {
   // const [updateCategorie] = useUpdateCategorieMutation();
@@ -57,34 +57,26 @@ const EditCategoriePage = ({ params }: any) => {
           },
         ]}
       /> */}
-      <ActionBar title="Edit Catagory">
+      <ActionBar title="Edit Colony">
         <Form submitHandler={onSubmit} defaultValues={defaultValues}>
           <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-            <Col span={24} style={{ margin: "10px 0" }}>
+            <Col span={8} style={{ margin: "10px 0" }}>
               <FormInput
-                name="title"
-                label="Category Title"
+                name="colony_name"
+                label="Colony Name"
                 type="text"
-                placeholder="Category Title"
+                placeholder="colony name"
                 size="large"
               />
             </Col>
-          </Row>
-          <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-            <Col
-              span={8}
-              style={{
-                margin: "10px 0",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "start",
-                gap: "10px",
-              }}
-            >
-              <Avatar shape="square" size={200} />
-              {/* <Avatar shape="square" size={200} src={imageUrl} /> */}
-              {/* <ImageUpload setImageUrl={setImageUrl} imageUrl={imageUrl} /> */}
+            <Col span={8} style={{ margin: "10px 0" }}>
+              <FormInput
+                name="ward_no"
+                label="Ward No"
+                type="text"
+                placeholder="ward number"
+                size="large"
+              />
             </Col>
           </Row>
 

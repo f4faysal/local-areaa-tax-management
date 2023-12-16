@@ -24,14 +24,14 @@ const CategoriesPage = () => {
 
   const query: Record<string, any> = {};
 
-  const [sige, setSige] = useState<number>(10);
+  const [size, setSize] = useState<number>(10);
   const [page, setPage] = useState<number>(1);
   const [sortBy, setSortBy] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   query["page"] = page;
-  query["limit"] = sige;
+  query["limit"] = size;
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
   query["search"] = searchTerm;
@@ -65,7 +65,7 @@ const CategoriesPage = () => {
       message.error(err.message);
     }
   };
-  // Compare this snippet from src/app/%28withlayout%29/management/colony/edit/page.tsx:
+
   const columns = [
     {
       title: "Colony Name",
@@ -95,7 +95,7 @@ const CategoriesPage = () => {
               width: "150px",
             }}
           >
-            <Link href={`/management/colonyedit/${data.id}`}>
+            <Link href={`/management/colony/edit/${data.id}`}>
               <Button onClick={() => console.log(data)} type="primary">
                 <EditOutlined />
               </Button>
@@ -114,7 +114,7 @@ const CategoriesPage = () => {
 
   const onPaginationChange = (page: number, pageSize: number) => {
     setPage(page);
-    setSige(pageSize);
+    setSize(pageSize);
   };
 
   const onTableChange = (pagination: any, filters: any, sorter: any) => {
