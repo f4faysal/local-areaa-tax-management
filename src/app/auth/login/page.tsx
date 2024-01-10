@@ -5,6 +5,8 @@ export const metadata: Metadata = {
   title: "Auth Login",
 };
 
+const x = ` hello world ${1 + 1} `;
+
 const LoginPage = () => {
   return <AuthLogin />;
 };
