@@ -6,6 +6,7 @@ import {
   useColoniesQuery,
   useDeleteColonyMutation,
 } from "@/redux/api/colonyApi";
+import { useHomesQuery } from "@/redux/api/homeRegisterApi";
 import { useDebounced } from "@/redux/hooks";
 import { getUserInfo } from "@/services/auth.service";
 import {
@@ -50,7 +51,9 @@ const HomeRegister = () => {
 
   const { data, isLoading } = useHomesQuery({});
 
-  const coloniesList = data?.colonies;
+  const coloniesList = data?.home;
+
+  console.log(coloniesList, "coloniesList")
 
   // const meta = data?.meta;
 
