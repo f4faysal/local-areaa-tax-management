@@ -90,6 +90,24 @@ const HomeRegister = () => {
   //     "id": "65761184a364d22e1ca7ffb2"
   // },
 
+  // {
+  //   "home_id": "1234567892",
+  //   "owner_name": "John Doe",
+  //   "father_or_husband": "Father's Name",
+  //   "home_name": "Doe Residence",
+  //   "home_type": "chapra",
+  //   "holding_no": "ABC1234",
+  //   "nid_no": "123456789012345613",
+  //   "phone_no": "123-456-789014",
+  //   "occupation": "Software Engineer",
+  //   "profile_img": "path/to/profile.jpg",
+  //   "village_name": "Villageville",
+  //   "house_price": "500000",
+  //   "tax_levied": "1000",
+  //   "taxable_value": "490000",
+  //   "colony": "65760e18a95ea4340752492b"
+  // }
+
   const columns = [
     {
       title: "Profile Image",
@@ -218,11 +236,7 @@ const HomeRegister = () => {
       <UPBreadCrumb
         items={[
           {
-            label: `Management`,
-          },
-          {
-            label: "Colony",
-            link: `/management/colony`,
+            label: `Home Register`,
           },
         ]}
       />

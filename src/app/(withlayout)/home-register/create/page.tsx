@@ -11,12 +11,21 @@ import Title from "antd/es/typography/Title";
 import { z } from "zod";
 
 const colonySchema = z.object({
-  colony_name: z
-    .string()
-    .min(3, { message: "Name must be at least 3 characters" }),
-  ward_no: z
-    .string()
-    .min(1, { message: "Ward No must be at least 1 characters" }),
+  home_id: z.string().min(1, { message: "Home ID is required" }),
+  owner_name: z.string().min(1, { message: "Owner Name is required" }),
+  father_or_husband: z.string().min(1, { message: "Father Name is required" }),
+  home_name: z.string().min(1, { message: "Home Name is required" }),
+  home_type: z.string().min(1, { message: "Home Type is required" }),
+  holding_no: z.string().min(1, { message: "Holding No is required" }),
+  nid_no: z.string().min(1, { message: "NID No is required" }),
+  phone_no: z.string().min(1, { message: "Phone No is required" }),
+  occupation: z.string().min(1, { message: "Occupation is required" }),
+  profile_img: z.string().min(1, { message: "Profile Image is required" }),
+  village_name: z.string().min(1, { message: "Village Name is required" }),
+  house_price: z.string().min(1, { message: "House Price is required" }),
+  tax_levied: z.string().min(1, { message: "Tax Levied is required" }),
+  taxable_value: z.string().min(1, { message: "Taxable Value is required" }),
+  colony: z.string().min(1, { message: "Colony is required" }),
 });
 
 const CreateColonyPage = () => {
@@ -41,41 +50,143 @@ const CreateColonyPage = () => {
       <UPBreadCrumb
         items={[
           {
-            label: `Management`,
+            label: "Home Register",
+            link: `/home-register`,
           },
           {
-            label: "Colony",
-            link: `/management/colony`,
-          },
-          {
-            label: "Create Colony",
+            label: "Register New Home",
           },
         ]}
       />
 
-      <Title level={2}>Create Colony</Title>
+      <Title level={2}>
+        <strong>Register New Home</strong>
+      </Title>
 
       <Form submitHandler={onSubmit} resolver={zodResolver(colonySchema)}>
-        <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-          <Col span={8} style={{ margin: "10px 0" }}>
+        <Row gutter={{ xs: 24, sm: 16, md: 24, lg: 32 }}>
+          <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
             <FormInput
-              name="colony_name"
-              label="Colony Name"
+              name="home_id"
+              label="Home ID (বাড়ির আইডি)"
               type="text"
-              placeholder="colony name"
+              placeholder="Home ID (বাড়ির আইডি)"
               size="large"
             />
           </Col>
-          <Col span={8} style={{ margin: "10px 0" }}>
+          <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
             <FormInput
-              name="ward_no"
-              label="Ward No"
+              name="holding_no"
+              label="Holding No (হোল্ডিং নং)"
               type="text"
-              placeholder="ward number"
+              placeholder="Holding No (হোল্ডিং নং)"
+              size="large"
+            />
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+            <FormInput
+              name="home_name"
+              label="Home Name (বাড়ির নাম)"
+              type="text"
+              placeholder="Home Name (বাড়ির নাম)"
+              size="large"
+            />
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+            <FormInput
+              name="owner_name"
+              label="Owner Name (মালিকের নাম)"
+              type="text"
+              placeholder="Owner Name (মালিকের নাম)"
+              size="large"
+            />
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+            <FormInput
+              name="occupation"
+              label="Occupation (মালিকের পেশা)"
+              type="text"
+              placeholder="Occupation (মালিকের পেশা)"
+              size="large"
+            />
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+            <FormInput
+              name="father_or_husband"
+              label="Father/Husband  (মালিকের বাবা/স্বামীর নাম)"
+              type="text"
+              placeholder="Father/Husband  (মালিকের বাবা/স্বামীর নাম)"
+              size="large"
+            />
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+            <FormInput
+              name="home_type"
+              label="Home Type (বাড়ির ধরণ)"
+              type="text"
+              placeholder="Home Type (বাড়ির ধরণ)"
+              size="large"
+            />
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+            <FormInput
+              name="village_name"
+              label="Village Name (গ্রামের নাম)"
+              type="text"
+              placeholder="Village Name (গ্রামের নাম)"
+              size="large"
+            />
+          </Col>
+
+          <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+            <FormInput
+              name="colony"
+              label="Colony (কলোনি)"
+              type="text"
+              placeholder="Colony (কলোনি)"
+              size="large"
+            />
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+            <FormInput
+              name="house_price"
+              label="House Price (বাড়ির মূল্য)"
+              type="text"
+              placeholder="House Price (বাড়ির মূল্য)"
+              size="large"
+            />
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+            <FormInput
+              name="tax_levied"
+              label="Tax Levied (কর আদায়)"
+              type="text"
+              placeholder="Tax Levied (কর আদায়)"
+              size="large"
+            />
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+            <FormInput
+              name="taxable_value"
+              label="Taxable Value (কর আদায়যোগ্য মূল্য)"
+              type="text"
+              placeholder="Taxable Value (কর আদায়যোগ্য মূল্য)"
               size="large"
             />
           </Col>
         </Row>
+        {/* 
+        <Row gutter={{ xs: 24, sm: 16, md: 24, lg: 32 }}>
+          <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+            <FormInput
+              name="home_type"
+              label="Home ID"
+              type="text"
+              placeholder="Home ID"
+              size="large"
+            />
+          </Col>
+        </Row> */}
 
         <Button loading={isLoading} type="primary" htmlType="submit">
           Create
