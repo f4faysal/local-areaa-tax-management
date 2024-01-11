@@ -12,6 +12,9 @@ type UMTableProps = {
   onPaginationChange?: (page: number, pageSize: number) => void;
   onTableChange?: (pagination: any, filter: any, sorter: any) => void;
   showPagination?: boolean;
+  isBordered?: boolean;
+  isVirtual?: boolean;
+  scroll?: any;
 };
 
 const UPTable = ({
@@ -24,6 +27,9 @@ const UPTable = ({
   onPaginationChange,
   onTableChange,
   showPagination = true,
+  isBordered,
+  isVirtual,
+  scroll,
 }: UMTableProps) => {
   const paginationConfig = showPagination
     ? {
@@ -37,6 +43,9 @@ const UPTable = ({
 
   return (
     <Table
+      bordered={isBordered}
+      virtual={isVirtual}
+      scroll={scroll}
       loading={loading}
       columns={columns}
       dataSource={dataSource}

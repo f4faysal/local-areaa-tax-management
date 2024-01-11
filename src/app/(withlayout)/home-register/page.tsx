@@ -97,10 +97,14 @@ const HomeRegister = () => {
       render: function (data: any) {
         return <img src={""} alt="profile" width="50px" height="50px" />;
       },
+
+      fixed: "left",
     },
     {
       title: "Holding No",
       dataIndex: "holding_no",
+
+      fixed: "left",
     },
     {
       title: "Home No",
@@ -167,7 +171,8 @@ const HomeRegister = () => {
               display: "flex",
               justifyContent: "space-around",
               alignItems: "center",
-              width: "150px",
+              width: "100%",
+              overflow: "hidden",
             }}
           >
             <Link href={`/management/colony/edit/${data.id}`}>
@@ -184,6 +189,7 @@ const HomeRegister = () => {
           </div>
         );
       },
+      fixed: "right",
     },
   ];
 
@@ -255,6 +261,9 @@ const HomeRegister = () => {
         loading={isLoading}
         columns={columns}
         dataSource={homesList}
+        isBordered={true}
+        isVirtual={true}
+        scroll={{ x: 2000, y: 400 }}
         // pageSize={sige}
         // totalPages={meta?.total}
         showSizeChanger={true}
