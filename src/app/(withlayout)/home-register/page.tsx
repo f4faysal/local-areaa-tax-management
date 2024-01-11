@@ -2,10 +2,7 @@
 import UPTable from "@/components/ui/Table";
 import UPBreadCrumb from "@/components/ui/UPBreadCrumb";
 import ActionBar from "@/components/ui/actionBar";
-import {
-  useColoniesQuery,
-  useDeleteColonyMutation,
-} from "@/redux/api/colonyApi";
+import { useDeleteColonyMutation } from "@/redux/api/colonyApi";
 import { useHomesQuery } from "@/redux/api/homeRegisterApi";
 import { useDebounced } from "@/redux/hooks";
 import { getUserInfo } from "@/services/auth.service";
@@ -51,9 +48,9 @@ const HomeRegister = () => {
 
   const { data, isLoading } = useHomesQuery({});
 
-  const coloniesList = data?.home;
+  const homesList = data?.home;
 
-  console.log(coloniesList, "coloniesList")
+  console.log(homesList, "homesList");
 
   // const meta = data?.meta;
 
@@ -70,14 +67,88 @@ const HomeRegister = () => {
     }
   };
 
+  //   {
+  //     "_id": "65761184a364d22e1ca7ffb2",
+  //     "home_id": "1234567891",
+  //     "owner_name": "John Doe",
+  //     "father_or_husband": "Father's Name",
+  //     "home_name": "Doe Residence",
+  //     "home_type": "chapra",
+  //     "holding_no": "ABC123",
+  //     "nid_no": "12345678901234561",
+  //     "phone_no": "123-456-78901",
+  //     "occupation": "Software Engineer",
+  //     "profile_img": "path/to/profile.jpg",
+  //     "village_name": "Villageville",
+  //     "house_price": "500000",
+  //     "tax_levied": "1000",
+  //     "taxable_value": "490000",
+  //     "colony": null,
+  //     "createdAt": "2023-12-10T19:29:08.630Z",
+  //     "updatedAt": "2023-12-10T19:29:08.630Z",
+  //     "__v": 0,
+  //     "id": "65761184a364d22e1ca7ffb2"
+  // },
+
   const columns = [
     {
-      title: "Colony Name",
-      dataIndex: "colony_name",
+      title: "Profile Image",
+      dataIndex: "profile_img",
+      render: function (data: any) {
+        return <img src={""} alt="profile" width="50px" height="50px" />;
+      },
     },
     {
-      title: "Colony Name",
-      dataIndex: "ward_no",
+      title: "Holding No",
+      dataIndex: "holding_no",
+    },
+    {
+      title: "Home No",
+      dataIndex: "home_id",
+    },
+    {
+      title: "Home Name",
+      dataIndex: "home_name",
+    },
+    {
+      title: "Home Owner Name",
+      dataIndex: "owner_name",
+    },
+    {
+      title: "Occupation",
+      dataIndex: "occupation",
+    },
+    {
+      title: "Father/Husband Name",
+      dataIndex: "father_or_husband",
+    },
+    {
+      title: "Home Type",
+      dataIndex: "home_type",
+    },
+    {
+      title: "Village Name",
+      dataIndex: "village_name",
+    },
+    {
+      title: "colony Name",
+      dataIndex: "colony",
+    },
+    {
+      title: "House Price",
+      dataIndex: "house_price",
+    },
+    {
+      title: "Tax Levied",
+      dataIndex: "tax_levied",
+    },
+    {
+      title: "Tax Levied",
+      dataIndex: "tax_levied",
+    },
+    {
+      title: "Taxable Value",
+      dataIndex: "taxable_value",
     },
     {
       title: "Created At",
@@ -183,7 +254,7 @@ const HomeRegister = () => {
       <UPTable
         loading={isLoading}
         columns={columns}
-        dataSource={coloniesList}
+        dataSource={homesList}
         // pageSize={sige}
         // totalPages={meta?.total}
         showSizeChanger={true}
