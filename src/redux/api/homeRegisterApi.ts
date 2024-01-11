@@ -34,7 +34,7 @@ export const homeRegisterApi = baseApi.injectEndpoints({
     // create a new colony
     homeRegister: build.mutation({
       query: (data) => ({
-        url: `${HOME_URL}/create-colony`,
+        url: `${HOME_URL}/create-home`,
         method: "POST",
         data,
       }),
@@ -60,4 +60,10 @@ export const homeRegisterApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useHomesQuery } = homeRegisterApi;
+export const {
+  useHomesQuery,
+  useHomeQuery,
+  useHomeRegisterMutation,
+  useUpdateHomeMutation,
+  useDeleteHomeMutation,
+} = homeRegisterApi;
