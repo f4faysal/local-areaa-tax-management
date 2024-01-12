@@ -6,11 +6,7 @@ import { useDeleteColonyMutation } from "@/redux/api/colonyApi";
 import { useHomesQuery } from "@/redux/api/homeRegisterApi";
 import { useDebounced } from "@/redux/hooks";
 import { getUserInfo } from "@/services/auth.service";
-import {
-  DeleteOutlined,
-  EditOutlined,
-  ReloadOutlined,
-} from "@ant-design/icons";
+import { EyeOutlined, ReloadOutlined } from "@ant-design/icons";
 import { Button, Input, message } from "antd";
 import dayjs from "dayjs";
 import Link from "next/link";
@@ -113,6 +109,7 @@ const HomeRegister = () => {
       title: "Profile Image",
       dataIndex: "profile_img",
       render: function (data: any) {
+        console.log(data)
         return (
           <img
             src={
@@ -209,21 +206,27 @@ const HomeRegister = () => {
               overflow: "hidden",
             }}
           >
-            <Link href={`/management/colony/edit/${data.id}`}>
+            {/* <Link href={`/management/colony/edit/${data.id}`}>
               <Button onClick={() => console.log(data)} type="primary">
                 <EditOutlined />
               </Button>
             </Link>
             <Button onClick={() => deleteHandler(data?.id)} danger>
               <DeleteOutlined />
-            </Button>
-            {/* <Button onClick={() => console.log(data)}>
-              <EyeOutlined />
             </Button> */}
+
+            <Link href={`/home/${data.id}`}>
+              <Button onClick={() => {
+                message.success("Viewing Home Details");
+              }}>
+                <EyeOutlined />
+              </Button>
+            </Link>
           </div>
         );
       },
       fixed: "right",
+      width: 100,
     },
   ];
 
