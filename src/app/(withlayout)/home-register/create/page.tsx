@@ -39,7 +39,6 @@ const CreateHomePage = () => {
   const { data, isLoading: isLoading2 } = useColoniesQuery({});
   const colonies = data?.colonies;
 
-  console.log(data?.colonies)
 
   const coloniesOptions = colonies?.map((colony) => {
     return {
@@ -56,9 +55,9 @@ const CreateHomePage = () => {
     message.loading("Registering new home...");
     console.log(data);
     try {
-      const res = await HomeRegister(data);
+      const res: any = await HomeRegister(data);
       console.log(res);
-      if (res) {
+      if (res?.data) {
         message.success("Home registered successfully");
       }
     } catch (err: any) {
@@ -94,7 +93,7 @@ const CreateHomePage = () => {
         </Title>
       </div>
 
-      <Form submitHandler={onSubmit} resolver={zodResolver(colonySchema)}>
+      <Form persistKey={"home-reg"} submitHandler={onSubmit} resolver={zodResolver(colonySchema)}>
         <div
           className="form-bg"
         >
@@ -180,7 +179,7 @@ const CreateHomePage = () => {
                 <Button icon={<UploadOutlined />}>Image (ছবি) upload</Button>
               </Upload> */}
 
-              <UploadImage name="profile_img" />
+              <UploadImage name="file" />
 
             </Col>
 

@@ -42,7 +42,7 @@ const UploadImage = ({ name }: ImageUploadProps) => {
     }
     if (info.file.status === "done") {
       // Get this url from response in real world.
-      setValue(name, info.file.originFileObj);
+      // setValue(name, info.file.originFileObj);
       getBase64(info.file.originFileObj as RcFile, (url) => {
         setLoading(false);
         setImageUrl(url);
@@ -53,7 +53,9 @@ const UploadImage = ({ name }: ImageUploadProps) => {
   const uploadButton = (
     <div>
       {loading ? <LoadingOutlined /> : <PlusOutlined />}
-      <div style={{ marginTop: 8 }}>Upload</div>
+      <div style={{ marginTop: 8 }}>
+        Upload (ছবি)
+      </div>
     </div>
   );
 
