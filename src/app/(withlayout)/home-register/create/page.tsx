@@ -6,6 +6,9 @@ import UPBreadCrumb from "@/components/ui/UPBreadCrumb";
 import { useHomeRegisterMutation } from "@/redux/api/homeRegisterApi";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import FormSelectField from "@/components/forms/formSelectField";
+import UploadImage from "@/components/ui/uploadImage";
+import { homeTypeOptions } from "@/constants/global";
 import { UploadOutlined } from "@ant-design/icons";
 import { Button, Col, Row, Upload, message } from "antd";
 import Title from "antd/es/typography/Title";
@@ -31,6 +34,9 @@ const colonySchema = z.object({
 
 const CreateHomePage = () => {
   const [HomeRegister, { isLoading }] = useHomeRegisterMutation();
+
+
+
 
   const onSubmit = async (data: z.infer<typeof colonySchema>) => {
     data.profile_img =
@@ -90,6 +96,9 @@ const CreateHomePage = () => {
               >
                 <Button icon={<UploadOutlined />}>Image (ছবি) upload</Button>
               </Upload>
+
+              <UploadImage name="profile_img" />
+
             </Col>
 
             <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
@@ -165,10 +174,11 @@ const CreateHomePage = () => {
               />
             </Col>
             <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-              <FormInput
+              <FormSelectField
+                options={homeTypeOptions}
                 name="home_type"
                 label="Home Type (বাড়ির ধরণ)"
-                type="text"
+
                 placeholder="Home Type (বাড়ির ধরণ)"
                 size="large"
               />
@@ -220,18 +230,8 @@ const CreateHomePage = () => {
               />
             </Col>
           </Row>
-          {/* 
-        <Row gutter={{ xs: 24, sm: 16, md: 24, lg: 32 }}>
-          <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-            <FormInput
-              name="home_type"
-              label="Home ID"
-              type="text"
-              placeholder="Home ID"
-              size="large"
-            />
-          </Col>
-        </Row> */}
+
+
 
           <Button loading={isLoading} type="primary" htmlType="submit">
             Register Home (বাড়ি নিবন্ধন করুন)
