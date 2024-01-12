@@ -178,7 +178,6 @@ const CreateHomePage = () => {
                 options={homeTypeOptions}
                 name="home_type"
                 label="Home Type (বাড়ির ধরণ)"
-
                 placeholder="Home Type (বাড়ির ধরণ)"
                 size="large"
               />
