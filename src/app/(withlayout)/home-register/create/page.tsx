@@ -66,7 +66,7 @@ const CreateHomePage = () => {
       message.error(err.message);
     }
   };
-  // const fileList: any[] = [];
+
 
 
   if (isLoading2) return <SkeletonHomeReg />
@@ -96,18 +96,82 @@ const CreateHomePage = () => {
 
       <Form submitHandler={onSubmit} resolver={zodResolver(colonySchema)}>
         <div
-          style={{
-            padding: "50px 5px",
-            // border: "1px solid #ddd",
-            borderRadius: "5px",
-            background: "#fff",
-          }}
+          className="form-bg"
         >
           <Title level={4}>
-            <strong>Home Information</strong>
+            <strong>
+              বাড়ির তথ্য পূরণ করুন (Fill up home information)
+            </strong>
           </Title>
           <Row gutter={{ xs: 24, sm: 16, md: 24, lg: 32 }}>
-            <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+            <Col xs={24} sm={12} md={8} lg={8} style={{ marginBottom: "16px" }}>
+              <FormInput
+                name="home_id"
+                label="Home ID (বাড়ির আইডি)"
+                type="text"
+                placeholder="Home ID (বাড়ির আইডি)"
+                size="large"
+              />
+            </Col>
+            <Col xs={24} sm={12} md={8} lg={8} style={{ marginBottom: "16px" }}>
+              <FormInput
+                name="holding_no"
+                label="Holding No (হোল্ডিং নং)"
+                type="text"
+                placeholder="Holding No (হোল্ডিং নং)"
+                size="large"
+              />
+            </Col>
+            <Col xs={24} sm={12} md={8} lg={8} style={{ marginBottom: "16px" }}>
+              <FormInput
+                name="home_name"
+                label="Home Name (বাড়ির নাম)"
+                type="text"
+                placeholder="Home Name (বাড়ির নাম)"
+                size="large"
+              />
+            </Col>
+
+            <Col xs={24} sm={12} md={8} lg={8} style={{ marginBottom: "16px" }}>
+              <FormSelectField
+                options={homeTypeOptions}
+                name="home_type"
+                label="Home Type (বাড়ির ধরণ)"
+                placeholder="Home Type (বাড়ির ধরণ)"
+                size="large"
+              />
+            </Col>
+            <Col xs={24} sm={12} md={8} lg={8} style={{ marginBottom: "16px" }}>
+              <FormInput
+                name="village_name"
+                label="Village Name (গ্রামের নাম)"
+                type="text"
+                placeholder="Village Name (গ্রামের নাম)"
+                size="large"
+              />
+            </Col>
+            <Col xs={24} sm={12} md={8} lg={8} style={{ marginBottom: "16px" }}>
+              <FormSelectField
+                options={coloniesOptions || []}
+                name="colony"
+                label="Colony (কলোনি)"
+                placeholder="Colony (কলোনি) নির্বাচন করুন"
+                size="large"
+              />
+            </Col>
+
+          </Row>
+        </div>
+        <div
+          className="form-bg"
+        >
+          <Title level={4}>
+            <strong>
+              বাড়ির মালিকের তথ্য পূরণ করুন (Fill up home owner information)
+            </strong>
+          </Title>
+          <Row gutter={{ xs: 24, sm: 16, md: 24, lg: 32 }}>
+            <Col xs={24} sm={12} md={8} lg={8} style={{ marginBottom: "16px" }}>
               {/* <Upload
                 action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
                 listType="picture"
@@ -120,34 +184,7 @@ const CreateHomePage = () => {
 
             </Col>
 
-            <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-              <FormInput
-                name="home_id"
-                label="Home ID (বাড়ির আইডি)"
-                type="text"
-                placeholder="Home ID (বাড়ির আইডি)"
-                size="large"
-              />
-            </Col>
-            <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-              <FormInput
-                name="holding_no"
-                label="Holding No (হোল্ডিং নং)"
-                type="text"
-                placeholder="Holding No (হোল্ডিং নং)"
-                size="large"
-              />
-            </Col>
-            <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-              <FormInput
-                name="home_name"
-                label="Home Name (বাড়ির নাম)"
-                type="text"
-                placeholder="Home Name (বাড়ির নাম)"
-                size="large"
-              />
-            </Col>
-            <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+            <Col xs={24} sm={12} md={8} lg={8} style={{ marginBottom: "16px" }}>
               <FormInput
                 name="owner_name"
                 label="Owner Name (মালিকের নাম)"
@@ -156,16 +193,7 @@ const CreateHomePage = () => {
                 size="large"
               />
             </Col>
-            <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-              <FormInput
-                name="nid_no"
-                label="NID No (জাতীয় পরিচয় পত্র নং)"
-                type="text"
-                placeholder="NID No (জাতীয় পরিচয় পত্র নং)"
-                size="large"
-              />
-            </Col>
-            <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+            <Col xs={24} sm={12} md={8} lg={8} style={{ marginBottom: "16px" }}>
               <FormInput
                 name="occupation"
                 label="Occupation (মালিকের পেশা)"
@@ -174,7 +202,7 @@ const CreateHomePage = () => {
                 size="large"
               />
             </Col>
-            <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+            <Col xs={24} sm={12} md={8} lg={8} style={{ marginBottom: "16px" }}>
               <FormInput
                 name="phone_no"
                 label="Phone No (ফোন নং)"
@@ -183,7 +211,7 @@ const CreateHomePage = () => {
                 size="large"
               />
             </Col>
-            <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+            <Col xs={24} sm={12} md={8} lg={8} style={{ marginBottom: "16px" }}>
               <FormInput
                 name="father_or_husband"
                 label="Father/Husband  (মালিকের বাবা/স্বামীর নাম)"
@@ -192,35 +220,30 @@ const CreateHomePage = () => {
                 size="large"
               />
             </Col>
-            <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-              <FormSelectField
-                options={homeTypeOptions}
-                name="home_type"
-                label="Home Type (বাড়ির ধরণ)"
-                placeholder="Home Type (বাড়ির ধরণ)"
-                size="large"
-              />
-            </Col>
-            <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+            <Col xs={24} sm={12} md={8} lg={8} style={{ marginBottom: "16px" }}>
               <FormInput
-                name="village_name"
-                label="Village Name (গ্রামের নাম)"
+                name="nid_no"
+                label="NID No (জাতীয় পরিচয় পত্র নং)"
                 type="text"
-                placeholder="Village Name (গ্রামের নাম)"
+                placeholder="NID No (জাতীয় পরিচয় পত্র নং)"
                 size="large"
               />
             </Col>
+          </Row>
+        </div>
 
-            <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-              <FormSelectField
-                options={coloniesOptions || []}
-                name="colony"
-                label="Colony (কলোনি)"
-                placeholder="Colony (কলোনি) নির্বাচন করুন"
-                size="large"
-              />
-            </Col>
-            <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+        <div
+          className="form-bg"
+        >
+          <Title level={4} >
+            <strong>
+              বাড়ির মূল্য ও কর সংক্রান্ত তথ্য পূরণ করুন (Fill up home price and tax related information)
+            </strong>
+          </Title>
+          <Row gutter={{ xs: 24, sm: 16, md: 24, lg: 32 }}>
+
+
+            <Col xs={24} sm={12} md={8} lg={8} style={{ marginBottom: "16px" }}>
               <FormInput
                 name="house_price"
                 label="House Price (বাড়ির মূল্য)"
@@ -229,7 +252,7 @@ const CreateHomePage = () => {
                 size="large"
               />
             </Col>
-            <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+            <Col xs={24} sm={12} md={8} lg={8} style={{ marginBottom: "16px" }}>
               <FormInput
                 name="tax_levied"
                 label="Tax Levied (কর আদায়)"
@@ -238,7 +261,7 @@ const CreateHomePage = () => {
                 size="large"
               />
             </Col>
-            <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+            <Col xs={24} sm={12} md={8} lg={8} style={{ marginBottom: "16px" }}>
               <FormInput
                 name="taxable_value"
                 label="Taxable Value (কর আদায়যোগ্য মূল্য)"
@@ -248,13 +271,12 @@ const CreateHomePage = () => {
               />
             </Col>
           </Row>
-
-
-
-          <Button loading={isLoading} type="primary" htmlType="submit">
-            Register Home (বাড়ি নিবন্ধন করুন)
-          </Button>
         </div>
+
+        <Button loading={isLoading} type="primary" htmlType="submit">
+          Register Home (বাড়ি নিবন্ধন করুন)
+        </Button>
+
       </Form>
     </div>
   );

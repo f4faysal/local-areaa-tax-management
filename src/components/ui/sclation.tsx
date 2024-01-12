@@ -18,152 +18,108 @@ const SkeletonHomeReg: React.FC = () => {
                     <Skeleton />
                </div>
 
+               <div
+                    className="form-bg"
+               >
 
-               <Row gutter={{ xs: 24, sm: 16, md: 24, lg: 32 }}>
+                    <Row gutter={{ xs: 24, sm: 16, md: 24, lg: 32 }}>
+                         <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+                              <Space>
+                                   <Skeleton.Input active={true} />
+                              </Space>
+                         </Col>
+                         <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+                              <Space>
+                                   <Skeleton.Input active={true} />
+                              </Space>
+                         </Col>
+                         <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+                              <Space>
+                                   <Skeleton.Input active={true} />
+                              </Space>
+                         </Col>
 
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Image active={true} />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
-                    <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-                         <Space>
-                              <Skeleton.Input active={true} size='large' />
-                         </Space>
-                    </Col>
+                         <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+                              <Space>
+                                   <Skeleton.Input active={true} />
+                              </Space>
+                         </Col>
+                         <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+                              <Space>
+                                   <Skeleton.Input active={true} />
+                              </Space>
+                         </Col>
+                         <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+                              <Space>
+                                   <Skeleton.Input active={true} />
+                              </Space>
+                         </Col>
+                         <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+                              <Space>
+                                   <Skeleton.Input active={true} />
+                              </Space>
+                         </Col>
+                         <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+                              <Space>
+                                   <Skeleton.Input active={true} />
+                              </Space>
+                         </Col>
 
+                    </Row>
+               </div>
 
-               </Row>
+               <div
+                    className="form-bg"
+               >
+
+                    <Row gutter={{ xs: 24, sm: 16, md: 24, lg: 32 }}>
+                         <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+                              <Space>
+                                   <Skeleton.Image active={true} />
+                              </Space>
+                         </Col>
+                         <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+                              <Space>
+                                   <Skeleton.Input active={true} />
+                              </Space>
+                         </Col>
+                         <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+                              <Space>
+                                   <Skeleton.Input active={true} />
+                              </Space>
+                         </Col>
+                         <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+                              <Space>
+                                   <Skeleton.Input active={true} />
+                              </Space>
+                         </Col>
+                         <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+                              <Space>
+                                   <Skeleton.Input active={true} />
+                              </Space>
+                         </Col>
+
+                         <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+                              <Space>
+                                   <Skeleton.Input active={true} />
+                              </Space>
+                         </Col>
+                         <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+                              <Space>
+                                   <Skeleton.Input active={true} />
+                              </Space>
+                         </Col>
+                         <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
+                              <Space>
+                                   <Skeleton.Input active={true} />
+                              </Space>
+                         </Col>
+
+                    </Row>
+               </div>
+               <Space>
+                    <Skeleton.Button active={true} />
+               </Space>
 
 
           </div>

@@ -54,6 +54,18 @@
 }
 /* Layout styles end */
 
+/* Global styles start */
+.form-bg {
+  padding: 1rem;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 @media only screen and (min-width: 768px) {
   .hideOnMobile {
     display: block;
