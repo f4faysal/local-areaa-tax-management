@@ -7,8 +7,10 @@ import { useHomeRegisterMutation } from "@/redux/api/homeRegisterApi";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import FormSelectField from "@/components/forms/formSelectField";
+import SkeletonHomeReg from "@/components/ui/sclation";
 import UploadImage from "@/components/ui/uploadImage";
 import { homeTypeOptions } from "@/constants/global";
+import { useColoniesQuery } from "@/redux/api/colonyApi";
 import { UploadOutlined } from "@ant-design/icons";
 import { Button, Col, Row, Upload, message } from "antd";
 import Title from "antd/es/typography/Title";
@@ -36,7 +38,9 @@ const CreateHomePage = () => {
   const [HomeRegister, { isLoading }] = useHomeRegisterMutation();
 
 
+  const { data, isLoading: isLoading2 } = useColoniesQuery({});
 
+  console.log(data?.colonies)
 
   const onSubmit = async (data: z.infer<typeof colonySchema>) => {
     data.profile_img =
@@ -56,6 +60,10 @@ const CreateHomePage = () => {
     }
   };
   const fileList: any[] = [];
+
+
+  if (isLoading2) return <SkeletonHomeReg />
+
 
   return (
     <div>
