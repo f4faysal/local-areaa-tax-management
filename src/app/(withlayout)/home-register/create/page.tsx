@@ -2,17 +2,15 @@
 
 import Form from "@/components/forms/form";
 import FormInput from "@/components/forms/formInput";
-import UPBreadCrumb from "@/components/ui/UPBreadCrumb";
-import { useHomeRegisterMutation } from "@/redux/api/homeRegisterApi";
-import { zodResolver } from "@hookform/resolvers/zod";
-
 import FormSelectField from "@/components/forms/formSelectField";
+import UPBreadCrumb from "@/components/ui/UPBreadCrumb";
 import SkeletonHomeReg from "@/components/ui/sclation";
 import UploadImage from "@/components/ui/uploadImage";
 import { homeTypeOptions } from "@/constants/global";
 import { useColoniesQuery } from "@/redux/api/colonyApi";
-import { UploadOutlined } from "@ant-design/icons";
-import { Button, Col, Row, Upload, message } from "antd";
+import { useHomeRegisterMutation } from "@/redux/api/homeRegisterApi";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button, Col, Row, message } from "antd";
 import Title from "antd/es/typography/Title";
 import { z } from "zod";
 
@@ -39,8 +37,17 @@ const CreateHomePage = () => {
 
 
   const { data, isLoading: isLoading2 } = useColoniesQuery({});
+  const colonies = data?.colonies;
 
   console.log(data?.colonies)
+
+  const coloniesOptions = colonies?.map((colony) => {
+    return {
+      // colony and ward no 
+      label: `${colony?.colony_name}  (ওয়ার্ড নম্বর -${colony?.ward_no})`,
+      value: colony?.id,
+    };
+  });
 
   const onSubmit = async (data: z.infer<typeof colonySchema>) => {
     data.profile_img =
@@ -59,7 +66,7 @@ const CreateHomePage = () => {
       message.error(err.message);
     }
   };
-  const fileList: any[] = [];
+  // const fileList: any[] = [];
 
 
   if (isLoading2) return <SkeletonHomeReg />
@@ -79,9 +86,13 @@ const CreateHomePage = () => {
         ]}
       />
 
-      <Title level={2}>
-        <strong>Register New Home</strong>
-      </Title>
+      <div style={{
+        padding: "10px 5px",
+      }}>
+        <Title level={3}>
+          <strong>নতুন বাড়ি নিবন্ধন করুন</strong>
+        </Title>
+      </div>
 
       <Form submitHandler={onSubmit} resolver={zodResolver(colonySchema)}>
         <div
@@ -97,13 +108,13 @@ const CreateHomePage = () => {
           </Title>
           <Row gutter={{ xs: 24, sm: 16, md: 24, lg: 32 }}>
             <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-              <Upload
+              {/* <Upload
                 action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
                 listType="picture"
                 defaultFileList={[...fileList]}
               >
                 <Button icon={<UploadOutlined />}>Image (ছবি) upload</Button>
-              </Upload>
+              </Upload> */}
 
               <UploadImage name="profile_img" />
 
@@ -201,11 +212,11 @@ const CreateHomePage = () => {
             </Col>
 
             <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-              <FormInput
+              <FormSelectField
+                options={coloniesOptions || []}
                 name="colony"
                 label="Colony (কলোনি)"
-                type="text"
-                placeholder="Colony (কলোনি)"
+                placeholder="Colony (কলোনি) নির্বাচন করুন"
                 size="large"
               />
             </Col>
