@@ -6,7 +6,8 @@ import UPBreadCrumb from "@/components/ui/UPBreadCrumb";
 import { useHomeRegisterMutation } from "@/redux/api/homeRegisterApi";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Button, Col, Row, message } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
+import { Button, Col, Row, Upload, message } from "antd";
 import Title from "antd/es/typography/Title";
 import { z } from "zod";
 
@@ -20,7 +21,7 @@ const colonySchema = z.object({
   nid_no: z.string().min(1, { message: "NID No is required" }),
   phone_no: z.string().min(1, { message: "Phone No is required" }),
   occupation: z.string().min(1, { message: "Occupation is required" }),
-  profile_img: z.string().min(1, { message: "Profile Image is required" }),
+  profile_img: z.string().optional(),
   village_name: z.string().min(1, { message: "Village Name is required" }),
   house_price: z.string().min(1, { message: "House Price is required" }),
   tax_levied: z.string().min(1, { message: "Tax Levied is required" }),
@@ -32,12 +33,15 @@ const CreateHomePage = () => {
   const [HomeRegister, { isLoading }] = useHomeRegisterMutation();
 
   const onSubmit = async (data: z.infer<typeof colonySchema>) => {
+    data.profile_img =
+      "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png";
+
     message.loading("Registering new home...");
     console.log(data);
     try {
-      const res = await HomeRegister(data).unwrap;
+      const res = await HomeRegister(data);
       console.log(res);
-      if (res?.id) {
+      if (res) {
         message.success("Home registered successfully");
       }
     } catch (err: any) {
@@ -45,6 +49,7 @@ const CreateHomePage = () => {
       message.error(err.message);
     }
   };
+  const fileList: any[] = [];
 
   return (
     <div>
@@ -78,14 +83,15 @@ const CreateHomePage = () => {
           </Title>
           <Row gutter={{ xs: 24, sm: 16, md: 24, lg: 32 }}>
             <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
-              <FormInput
-                name="profile_img"
-                label="Profile Image (প্রোফাইল ছবি)"
-                type="text"
-                placeholder="Profile Image (প্রোফাইল ছবি)"
-                size="large"
-              />
+              <Upload
+                action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
+                listType="picture"
+                defaultFileList={[...fileList]}
+              >
+                <Button icon={<UploadOutlined />}>Image (ছবি) upload</Button>
+              </Upload>
             </Col>
+
             <Col xs={24} sm={12} md={8} lg={6} style={{ marginBottom: "16px" }}>
               <FormInput
                 name="home_id"

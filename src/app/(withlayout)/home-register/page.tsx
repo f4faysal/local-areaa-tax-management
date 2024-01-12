@@ -113,36 +113,51 @@ const HomeRegister = () => {
       title: "Profile Image",
       dataIndex: "profile_img",
       render: function (data: any) {
-        return <img src={""} alt="profile" width="50px" height="50px" />;
+        return (
+          <img
+            src={
+              "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+            }
+            alt="profile"
+            width="50px"
+            height="50px"
+          />
+        );
       },
-
       fixed: "left",
+      width: 130,
+
     },
     {
       title: "Holding No",
       dataIndex: "holding_no",
-
+      width: 150,
       fixed: "left",
     },
     {
       title: "Home No",
       dataIndex: "home_id",
+      width: 150,
     },
     {
       title: "Home Name",
       dataIndex: "home_name",
+      width: 180,
     },
     {
       title: "Home Owner Name",
       dataIndex: "owner_name",
+      width: 210,
     },
     {
       title: "Occupation",
       dataIndex: "occupation",
+      width: 180,
     },
     {
       title: "Father/Husband Name",
       dataIndex: "father_or_husband",
+      width: 200,
     },
     {
       title: "Home Type",
@@ -179,6 +194,7 @@ const HomeRegister = () => {
         return data && dayjs(data).format("MMM D, YYYY hh:mm A");
       },
       sorter: true,
+      width: 200,
     },
     {
       title: "Action",
@@ -277,7 +293,7 @@ const HomeRegister = () => {
         dataSource={homesList}
         isBordered={true}
         isVirtual={true}
-        scroll={{ x: 2000, y: 400 }}
+        scroll={{ x: 2500, y: 600 }}
         // pageSize={sige}
         // totalPages={meta?.total}
         showSizeChanger={true}

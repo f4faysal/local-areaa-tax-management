@@ -89,7 +89,8 @@ const SideBarNav: React.FC<SideBarNavProps> = ({ collapsed }) => {
               paddingBottom: "0.2rem",
             }}
           >
-            <strong>Md Faysal Hossain</strong>
+            {/* <strong>Md Faysal Hossain</strong> */}
+            <strong>Istiyak Ahamed Arman</strong>
           </p>
           <div
             style={{
