@@ -260,7 +260,7 @@ const HomeRegister = () => {
         ]}
       />
 
-      <ActionBar title="Home Register">
+      <ActionBar title="বাড়ির রেজিস্টার তালিকা (Registered Homes)">
         <Input
           type="text"
           size="large"
@@ -275,7 +275,9 @@ const HomeRegister = () => {
         />
         <div>
           <Link href={`/home-register/create`}>
-            <Button type="primary">Create</Button>
+            <Button type="primary">
+              নতুন বাড়ি তৈরি করুন (Create New Home)
+            </Button>
           </Link>
           {(!!sortBy || !!sortOrder || searchTerm) && (
             <Button
@@ -304,7 +306,7 @@ const HomeRegister = () => {
         // onTableChange={onTableChange}
         showPagination={true}
       />
-    </div>
+    </div >
   );
 };
 
