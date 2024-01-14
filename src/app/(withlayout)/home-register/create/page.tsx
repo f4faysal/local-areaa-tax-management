@@ -275,7 +275,7 @@ const CreateHomePage = () => {
           </Row>
         </div>
 
-        <Button loading={isLoading} type="primary" htmlType="submit">
+        <Button size="large" loading={isLoading} type="primary" htmlType="submit">
           Register Home (বাড়ি নিবন্ধন করুন)
         </Button>
 
