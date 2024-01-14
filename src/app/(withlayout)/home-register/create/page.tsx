@@ -178,6 +178,7 @@ const CreateHomePage = () => {
               >
 
               // <Upload {...props}>
+              //  <Button icon={<UploadOutlined />}>Click to Upload</Button>
                 <Button icon={<UploadOutlined />}>Image (ছবি) upload</Button>
               </Upload> */}
 
