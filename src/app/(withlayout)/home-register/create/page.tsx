@@ -176,6 +176,8 @@ const CreateHomePage = () => {
                 listType="picture"
                 defaultFileList={[...fileList]}
               >
+
+              // <Upload {...props}>
                 <Button icon={<UploadOutlined />}>Image (ছবি) upload</Button>
               </Upload> */}
 
