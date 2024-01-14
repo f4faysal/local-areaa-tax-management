@@ -25,7 +25,8 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
   // if (userId === undefined || role === undefined) {
   //   return router.push("/auth/login");
-  // }
+  // } else if (role === "admin") { // admin
+
 
   return (
     <Layout hasSider>
